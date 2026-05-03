@@ -28,7 +28,7 @@ GitHub to Railway validated by code review only — no live deployment execution
             .hard      { model: gpt-5.4-pro; backend: cli; }
             .verify    { model: gpt-5.4-mini; backend: cli; }
             .branch-a  { model: gpt-5.3-codex; backend: cli; }
-            .branch-b  { model: gemini-3-flash-preview; backend: cli; }
+            .branch-b  { model: gemini-3.1-pro-preview; backend: cli; }
         "
     ]
 

@@ -1,0 +1,777 @@
+{
+  "id": "session-pg-rituals",
+  "name": "P&G bundled rituals walkthrough",
+  "mode": "demo",
+  "bundled": true,
+  "createdAt": "2026-05-03T17:00:00.000Z",
+  "settingsSnapshot": {
+    "apiKey": "demo-key",
+    "company": {
+      "input": {
+        "text": "P&G is a portfolio of everyday brands that earn trust through repeated daily use.",
+        "links": [
+          "https://example.com/pg-brand-portfolio"
+        ],
+        "attachments": []
+      },
+      "summary": "The company brief is grounded in daily-use categories, brand trust, and broad household relevance.",
+      "confirmedAt": "2026-05-03T17:00:00.000Z"
+    },
+    "voice": {
+      "input": {
+        "text": "Write with measured optimism, concrete examples, and operator-grade specificity.",
+        "links": [],
+        "attachments": []
+      },
+      "summary": "The voice should sound analytical, warm, and practical rather than hype-driven.",
+      "confirmedAt": "2026-05-03T17:01:00.000Z"
+    },
+    "guardrails": {
+      "input": {
+        "text": "Avoid unsourced medical claims, avoid absolute statements, and cite source-derived claims with footnotes.",
+        "links": [],
+        "attachments": []
+      },
+      "summary": "The guardrails require careful sourcing, restrained claims, and explicit footnotes where evidence is used.",
+      "confirmedAt": "2026-05-03T17:02:00.000Z"
+    },
+    "updatedAt": "2026-05-03T17:02:00.000Z"
+  },
+  "draftSnapshot": {
+    "id": "draft-bundled",
+    "status": "complete",
+    "topic": {
+      "text": "Why household routines are becoming a moat for trusted consumer brands",
+      "links": [],
+      "attachments": [
+        {
+          "id": "attachment-rituals",
+          "name": "internal-notes.txt",
+          "mimeType": "text/plain",
+          "content": "Consumers want products that make repetitive tasks feel calmer and more competent."
+        }
+      ]
+    },
+    "promptSeed": "Why household routines are becoming a moat for trusted consumer brands",
+    "researchSources": [
+      {
+        "id": "src-rituals",
+        "url": "https://example.com/rituals-report",
+        "title": "Household rituals are replacing productivity hacks",
+        "author": "Dana Fields",
+        "publicationDate": "2026-04-19",
+        "snippet": "Consumer researchers are seeing mundane tasks reframed as rituals that reduce stress and create a feeling of control.",
+        "highlight": true
+      },
+      {
+        "id": "src-value",
+        "url": "https://example.com/value-premium",
+        "title": "Value is being redefined as reliability plus delight",
+        "author": "Mina Ortega",
+        "publicationDate": "2026-04-11",
+        "snippet": "Shoppers are not just trading down or up; they are rewarding products that feel dependable and quietly premium.",
+        "highlight": true
+      },
+      {
+        "id": "src-care",
+        "url": "https://example.com/care-systems",
+        "title": "Care systems are replacing single-product stories",
+        "author": "Leo Brandt",
+        "publicationDate": "2026-03-28",
+        "snippet": "Winning brands increasingly frame products as part of a care system rather than a one-off transaction.",
+        "highlight": false
+      }
+    ],
+    "outline": {
+      "title": "Routines are turning into brand moats",
+      "dek": "What trusted consumer brands can learn from ritual-shaped demand.",
+      "sections": [
+        {
+          "heading": "Rituals signal where relevance is moving",
+          "bullets": [
+            "Consumers want less friction and more reassurance in everyday tasks.",
+            "Rituals reveal why repeat categories still matter."
+          ]
+        },
+        {
+          "heading": "Reliable delight beats generic premium",
+          "bullets": [
+            "Reliability is now a premium cue when budgets are tight.",
+            "Small moments of delight can protect margin."
+          ]
+        },
+        {
+          "heading": "Systems thinking changes the post format",
+          "bullets": [
+            "Talk about routines and systems, not isolated SKUs.",
+            "Close with operator takeaways."
+          ]
+        }
+      ]
+    },
+    "writeCycles": [
+      {
+        "stage": "write",
+        "content": "# Routines are turning into brand moats\n\nConsumers are rewarding products that make repetitive tasks feel calmer, simpler, and more competent.[1]\n\n## Reliable delight is the new premium\n\nWhen shoppers describe value, they increasingly blend price discipline with dependable performance and small sensory rewards.[2]\n\n## Systems beat single-product stories\n\nWinning brands show how products fit into a repeatable care system rather than a one-off purchase.[3]",
+        "notes": "Initial draft with citations.",
+        "completedAt": "2026-05-03T17:08:00.000Z"
+      },
+      {
+        "stage": "edit",
+        "content": "# Routines are turning into brand moats\n\nConsumers are rewarding products that make repetitive tasks feel calmer, simpler, and more competent.[1]\n\n## Reliable delight is the new premium\n\nValue no longer means cheapness alone. It means dependable outcomes plus a small emotional payoff that justifies sticking with the brand.[2]\n\n## Systems beat single-product stories\n\nWinning brands show how products fit into a repeatable care system rather than a one-off purchase.[3]",
+        "notes": "Voice alignment pass.",
+        "completedAt": "2026-05-03T17:09:00.000Z"
+      },
+      {
+        "stage": "guardrails",
+        "content": "# Routines are turning into brand moats\n\nConsumers are rewarding products that make repetitive tasks feel calmer, simpler, and more competent.[1]\n\n## Reliable delight is the new premium\n\nValue no longer means cheapness alone. It means dependable outcomes plus a small emotional payoff that can reinforce loyalty when the product consistently performs.[2]\n\n## Systems beat single-product stories\n\nWinning brands show how products fit into a repeatable care system rather than a one-off purchase.[3]",
+        "notes": "Guardrails-only pass.",
+        "completedAt": "2026-05-03T17:10:00.000Z"
+      }
+    ],
+    "finalPost": {
+      "title": "Routines are turning into brand moats",
+      "subtitle": "Why trusted brands should write about systems, not just SKUs.",
+      "markdown": "# Routines are turning into brand moats\n\nConsumers are rewarding products that make repetitive tasks feel calmer, simpler, and more competent.[1]\n\n## Reliable delight is the new premium\n\nValue no longer means cheapness alone. It means dependable outcomes plus a small emotional payoff that can reinforce loyalty when the product consistently performs.[2]\n\n## Systems beat single-product stories\n\nWinning brands show how products fit into a repeatable care system rather than a one-off purchase.[3]",
+      "footnotes": [
+        {
+          "number": 1,
+          "sourceId": "src-rituals",
+          "label": "Household rituals are replacing productivity hacks",
+          "url": "https://example.com/rituals-report"
+        },
+        {
+          "number": 2,
+          "sourceId": "src-value",
+          "label": "Value is being redefined as reliability plus delight",
+          "url": "https://example.com/value-premium"
+        },
+        {
+          "number": 3,
+          "sourceId": "src-care",
+          "label": "Care systems are replacing single-product stories",
+          "url": "https://example.com/care-systems"
+        }
+      ],
+      "attributions": [
+        {
+          "citation": 1,
+          "sourceId": "src-rituals",
+          "title": "Household rituals are replacing productivity hacks",
+          "url": "https://example.com/rituals-report",
+          "author": "Dana Fields",
+          "publicationDate": "2026-04-19"
+        },
+        {
+          "citation": 2,
+          "sourceId": "src-value",
+          "title": "Value is being redefined as reliability plus delight",
+          "url": "https://example.com/value-premium",
+          "author": "Mina Ortega",
+          "publicationDate": "2026-04-11"
+        },
+        {
+          "citation": 3,
+          "sourceId": "src-care",
+          "title": "Care systems are replacing single-product stories",
+          "url": "https://example.com/care-systems",
+          "author": "Leo Brandt",
+          "publicationDate": "2026-03-28"
+        }
+      ],
+      "createdAt": "2026-05-03T17:10:00.000Z"
+    },
+    "createdAt": "2026-05-03T17:04:00.000Z",
+    "updatedAt": "2026-05-03T17:10:00.000Z"
+  },
+  "postSnapshot": {
+    "id": "post-draft-bundled",
+    "title": "Routines are turning into brand moats",
+    "subtitle": "Why trusted brands should write about systems, not just SKUs.",
+    "markdown": "# Routines are turning into brand moats\n\nConsumers are rewarding products that make repetitive tasks feel calmer, simpler, and more competent.[1]\n\n## Reliable delight is the new premium\n\nValue no longer means cheapness alone. It means dependable outcomes plus a small emotional payoff that can reinforce loyalty when the product consistently performs.[2]\n\n## Systems beat single-product stories\n\nWinning brands show how products fit into a repeatable care system rather than a one-off purchase.[3]",
+    "sources": [
+      {
+        "id": "src-rituals",
+        "url": "https://example.com/rituals-report",
+        "title": "Household rituals are replacing productivity hacks",
+        "author": "Dana Fields",
+        "publicationDate": "2026-04-19",
+        "snippet": "Consumer researchers are seeing mundane tasks reframed as rituals that reduce stress and create a feeling of control.",
+        "highlight": true
+      },
+      {
+        "id": "src-value",
+        "url": "https://example.com/value-premium",
+        "title": "Value is being redefined as reliability plus delight",
+        "author": "Mina Ortega",
+        "publicationDate": "2026-04-11",
+        "snippet": "Shoppers are not just trading down or up; they are rewarding products that feel dependable and quietly premium.",
+        "highlight": true
+      },
+      {
+        "id": "src-care",
+        "url": "https://example.com/care-systems",
+        "title": "Care systems are replacing single-product stories",
+        "author": "Leo Brandt",
+        "publicationDate": "2026-03-28",
+        "snippet": "Winning brands increasingly frame products as part of a care system rather than a one-off transaction.",
+        "highlight": false
+      }
+    ],
+    "footnotes": [
+      {
+        "number": 1,
+        "sourceId": "src-rituals",
+        "label": "Household rituals are replacing productivity hacks",
+        "url": "https://example.com/rituals-report"
+      },
+      {
+        "number": 2,
+        "sourceId": "src-value",
+        "label": "Value is being redefined as reliability plus delight",
+        "url": "https://example.com/value-premium"
+      },
+      {
+        "number": 3,
+        "sourceId": "src-care",
+        "label": "Care systems are replacing single-product stories",
+        "url": "https://example.com/care-systems"
+      }
+    ],
+    "attributions": [
+      {
+        "citation": 1,
+        "sourceId": "src-rituals",
+        "title": "Household rituals are replacing productivity hacks",
+        "url": "https://example.com/rituals-report",
+        "author": "Dana Fields",
+        "publicationDate": "2026-04-19"
+      },
+      {
+        "citation": 2,
+        "sourceId": "src-value",
+        "title": "Value is being redefined as reliability plus delight",
+        "url": "https://example.com/value-premium",
+        "author": "Mina Ortega",
+        "publicationDate": "2026-04-11"
+      },
+      {
+        "citation": 3,
+        "sourceId": "src-care",
+        "title": "Care systems are replacing single-product stories",
+        "url": "https://example.com/care-systems",
+        "author": "Leo Brandt",
+        "publicationDate": "2026-03-28"
+      }
+    ],
+    "createdAt": "2026-05-03T17:10:00.000Z"
+  },
+  "replaySteps": [
+    {
+      "id": "settings-api",
+      "route": "/settings",
+      "title": "Enter the API key",
+      "description": "The session starts with the API key already typed in.",
+      "buttonLabel": "Save API key",
+      "buttonTestId": "api-key-save",
+      "prefill": {
+        "apiKey": "demo-key"
+      }
+    },
+    {
+      "id": "settings-company",
+      "route": "/settings",
+      "title": "Confirm the company brief",
+      "description": "The company background fades in as if it had just been pasted.",
+      "buttonLabel": "Save company",
+      "buttonTestId": "company-confirm",
+      "prefill": {
+        "companyText": "P&G is a portfolio of everyday brands that earn trust through repeated daily use."
+      }
+    },
+    {
+      "id": "settings-voice",
+      "route": "/settings",
+      "title": "Confirm the voice",
+      "description": "Tone guidance appears next so the user sees the intended editorial voice.",
+      "buttonLabel": "Save voice",
+      "buttonTestId": "voice-confirm",
+      "prefill": {
+        "voiceText": "Write with measured optimism, concrete examples, and operator-grade specificity."
+      }
+    },
+    {
+      "id": "settings-guardrails",
+      "route": "/settings",
+      "title": "Confirm the guardrails",
+      "description": "Guardrails land last, showing how compliance constraints are captured.",
+      "buttonLabel": "Save guardrails",
+      "buttonTestId": "guardrails-confirm",
+      "prefill": {
+        "guardrailsText": "Avoid unsourced medical claims, avoid absolute statements, and cite source-derived claims with footnotes."
+      }
+    },
+    {
+      "id": "dashboard",
+      "route": "/dashboard",
+      "title": "Open the dashboard",
+      "description": "From there the user can branch into trend research or a new post.",
+      "buttonLabel": "Open dashboard",
+      "buttonTestId": "dashboard-new-post"
+    },
+    {
+      "id": "new-post-topic",
+      "route": "/new-post",
+      "title": "Seed the topic",
+      "description": "The topic prefill fades in and the attachment arrives a moment later.",
+      "buttonLabel": "Run research",
+      "buttonTestId": "topic-research",
+      "prefill": {
+        "topicText": "Why household routines are becoming a moat for trusted consumer brands",
+        "attachments": [
+          {
+            "id": "attachment-rituals",
+            "name": "internal-notes.txt",
+            "mimeType": "text/plain",
+            "content": "Consumers want products that make repetitive tasks feel calmer and more competent."
+          }
+        ]
+      },
+      "attachmentDelayMs": 600
+    },
+    {
+      "id": "new-post-research",
+      "route": "/new-post",
+      "title": "Review research",
+      "description": "Grounded source cards show up with metadata and one source already highlighted.",
+      "buttonLabel": "Build outline",
+      "buttonTestId": "research-continue"
+    },
+    {
+      "id": "new-post-outline",
+      "route": "/new-post",
+      "title": "Accept the outline",
+      "description": "The outline is synthesized in one shot from the gathered sources.",
+      "buttonLabel": "Accept outline",
+      "buttonTestId": "outline-accept",
+      "prefill": {
+        "outlineTitle": "Routines are turning into brand moats"
+      }
+    },
+    {
+      "id": "new-post-write",
+      "route": "/new-post",
+      "title": "Watch the write pipeline",
+      "description": "Write, edit, and guardrails run without a manual pause.",
+      "buttonLabel": "Reveal final post",
+      "buttonTestId": "complete-return"
+    },
+    {
+      "id": "new-post-complete",
+      "route": "/new-post",
+      "title": "Inspect the finished post",
+      "description": "The final article appears with serif typography and numbered footnotes.",
+      "buttonLabel": "Return to dashboard",
+      "buttonTestId": "complete-return",
+      "prefill": {
+        "previewMarkdown": "# Routines are turning into brand moats"
+      }
+    }
+  ],
+  "cacheEntries": [
+    {
+      "key": "confirm-company",
+      "schema": "confirmDocument",
+      "model": "gemini-3.1-pro-preview",
+      "promptSummary": "company confirmation",
+      "response": {
+        "summary": "The company brief is grounded in daily-use categories, brand trust, and broad household relevance."
+      },
+      "createdAt": "2026-05-03T17:00:10.000Z"
+    },
+    {
+      "key": "confirm-voice",
+      "schema": "confirmDocument",
+      "model": "gemini-3.1-pro-preview",
+      "promptSummary": "voice confirmation",
+      "response": {
+        "summary": "The voice should sound analytical, warm, and practical rather than hype-driven."
+      },
+      "createdAt": "2026-05-03T17:01:10.000Z"
+    },
+    {
+      "key": "confirm-guardrails",
+      "schema": "confirmDocument",
+      "model": "gemini-3.1-pro-preview",
+      "promptSummary": "guardrails confirmation",
+      "response": {
+        "summary": "The guardrails require careful sourcing, restrained claims, and explicit footnotes where evidence is used."
+      },
+      "createdAt": "2026-05-03T17:02:10.000Z"
+    },
+    {
+      "key": "trending-routines",
+      "schema": "trendingResearch",
+      "model": "gemini-3-flash-preview",
+      "promptSummary": "rituals trend",
+      "response": {
+        "trends": [
+          {
+            "id": "trend-routines",
+            "label": "Ritualized routines",
+            "momentum": 82,
+            "summary": "Households are reframing chores as rituals that reduce stress and restore control.",
+            "sources": [
+              {
+                "id": "trend-src-routines",
+                "url": "https://example.com/trend-routines",
+                "title": "Household rituals are replacing productivity hacks",
+                "author": "Dana Fields",
+                "publicationDate": "2026-04-19",
+                "snippet": "Mundane tasks are increasingly described as rituals that make people feel grounded.",
+                "highlight": true
+              }
+            ]
+          }
+        ]
+      },
+      "createdAt": "2026-05-03T17:04:10.000Z"
+    },
+    {
+      "key": "trending-value",
+      "schema": "trendingResearch",
+      "model": "gemini-3-flash-preview",
+      "promptSummary": "value trend",
+      "response": {
+        "trends": [
+          {
+            "id": "trend-value",
+            "label": "Reliable value",
+            "momentum": 74,
+            "summary": "Consumers reward products that feel dependable and quietly premium.",
+            "sources": [
+              {
+                "id": "trend-src-value",
+                "url": "https://example.com/trend-value",
+                "title": "Value is being redefined as reliability plus delight",
+                "author": "Mina Ortega",
+                "publicationDate": "2026-04-11",
+                "snippet": "Dependable outcomes are blending with small rewards that keep products feeling worth it.",
+                "highlight": true
+              }
+            ]
+          }
+        ]
+      },
+      "createdAt": "2026-05-03T17:04:20.000Z"
+    },
+    {
+      "key": "trending-care",
+      "schema": "trendingResearch",
+      "model": "gemini-3-flash-preview",
+      "promptSummary": "care systems trend",
+      "response": {
+        "trends": [
+          {
+            "id": "trend-care",
+            "label": "Care systems",
+            "momentum": 69,
+            "summary": "Consumers are responding to system-level care stories over one-product messages.",
+            "sources": [
+              {
+                "id": "trend-src-care",
+                "url": "https://example.com/trend-care",
+                "title": "Care systems are replacing single-product stories",
+                "author": "Leo Brandt",
+                "publicationDate": "2026-03-28",
+                "snippet": "Brands that explain the routine around the product are resonating more than standalone claims.",
+                "highlight": true
+              }
+            ]
+          }
+        ]
+      },
+      "createdAt": "2026-05-03T17:04:30.000Z"
+    },
+    {
+      "key": "trending-synthesis",
+      "schema": "trendingPrompts",
+      "model": "gemini-3.1-pro-preview",
+      "promptSummary": "trending prompt synthesis",
+      "response": {
+        "prompts": [
+          {
+            "id": "prompt-1",
+            "title": "Routines as a moat",
+            "prompt": "Why household routines are becoming a moat for trusted consumer brands",
+            "rationale": "Connects ritualized routines with repeat brand relevance."
+          },
+          {
+            "id": "prompt-2",
+            "title": "Reliable delight",
+            "prompt": "How dependable products are earning premium status without feeling indulgent",
+            "rationale": "Translates the value signal into a pricing and loyalty angle."
+          },
+          {
+            "id": "prompt-3",
+            "title": "Care systems",
+            "prompt": "Why winning category stories now describe a system, not a single product",
+            "rationale": "Frames portfolio storytelling around repeatable care systems."
+          }
+        ]
+      },
+      "createdAt": "2026-05-03T17:04:50.000Z"
+    },
+    {
+      "key": "research",
+      "schema": "research",
+      "model": "gemini-3-flash-preview",
+      "promptSummary": "draft research",
+      "response": {
+        "sources": [
+          {
+            "id": "src-rituals",
+            "url": "https://example.com/rituals-report",
+            "title": "Household rituals are replacing productivity hacks",
+            "author": "Dana Fields",
+            "publicationDate": "2026-04-19",
+            "snippet": "Consumer researchers are seeing mundane tasks reframed as rituals that reduce stress and create a feeling of control.",
+            "highlight": true
+          },
+          {
+            "id": "src-value",
+            "url": "https://example.com/value-premium",
+            "title": "Value is being redefined as reliability plus delight",
+            "author": "Mina Ortega",
+            "publicationDate": "2026-04-11",
+            "snippet": "Shoppers are not just trading down or up; they are rewarding products that feel dependable and quietly premium.",
+            "highlight": true
+          },
+          {
+            "id": "src-care",
+            "url": "https://example.com/care-systems",
+            "title": "Care systems are replacing single-product stories",
+            "author": "Leo Brandt",
+            "publicationDate": "2026-03-28",
+            "snippet": "Winning brands increasingly frame products as part of a care system rather than a one-off transaction.",
+            "highlight": false
+          }
+        ]
+      },
+      "createdAt": "2026-05-03T17:06:00.000Z"
+    },
+    {
+      "key": "outline",
+      "schema": "outline",
+      "model": "gemini-3.1-pro-preview",
+      "promptSummary": "draft outline",
+      "response": {
+        "outline": {
+          "title": "Routines are turning into brand moats",
+          "dek": "What trusted consumer brands can learn from ritual-shaped demand.",
+          "sections": [
+            {
+              "heading": "Rituals signal where relevance is moving",
+              "bullets": [
+                "Consumers want less friction and more reassurance in everyday tasks.",
+                "Rituals reveal why repeat categories still matter."
+              ]
+            },
+            {
+              "heading": "Reliable delight beats generic premium",
+              "bullets": [
+                "Reliability is now a premium cue when budgets are tight.",
+                "Small moments of delight can protect margin."
+              ]
+            },
+            {
+              "heading": "Systems thinking changes the post format",
+              "bullets": [
+                "Talk about routines and systems, not isolated SKUs.",
+                "Close with operator takeaways."
+              ]
+            }
+          ]
+        }
+      },
+      "createdAt": "2026-05-03T17:07:00.000Z"
+    },
+    {
+      "key": "write",
+      "schema": "write",
+      "model": "gemini-3.1-pro-preview",
+      "promptSummary": "write stage",
+      "response": {
+        "title": "Routines are turning into brand moats",
+        "subtitle": "Why trusted brands should write about systems, not just SKUs.",
+        "markdown": "# Routines are turning into brand moats\n\nConsumers are rewarding products that make repetitive tasks feel calmer, simpler, and more competent.[1]\n\n## Reliable delight is the new premium\n\nWhen shoppers describe value, they increasingly blend price discipline with dependable performance and small sensory rewards.[2]\n\n## Systems beat single-product stories\n\nWinning brands show how products fit into a repeatable care system rather than a one-off purchase.[3]",
+        "footnotes": [
+          {
+            "number": 1,
+            "sourceId": "src-rituals",
+            "label": "Household rituals are replacing productivity hacks",
+            "url": "https://example.com/rituals-report"
+          },
+          {
+            "number": 2,
+            "sourceId": "src-value",
+            "label": "Value is being redefined as reliability plus delight",
+            "url": "https://example.com/value-premium"
+          },
+          {
+            "number": 3,
+            "sourceId": "src-care",
+            "label": "Care systems are replacing single-product stories",
+            "url": "https://example.com/care-systems"
+          }
+        ],
+        "attributions": [
+          {
+            "citation": 1,
+            "sourceId": "src-rituals",
+            "title": "Household rituals are replacing productivity hacks",
+            "url": "https://example.com/rituals-report",
+            "author": "Dana Fields",
+            "publicationDate": "2026-04-19"
+          },
+          {
+            "citation": 2,
+            "sourceId": "src-value",
+            "title": "Value is being redefined as reliability plus delight",
+            "url": "https://example.com/value-premium",
+            "author": "Mina Ortega",
+            "publicationDate": "2026-04-11"
+          },
+          {
+            "citation": 3,
+            "sourceId": "src-care",
+            "title": "Care systems are replacing single-product stories",
+            "url": "https://example.com/care-systems",
+            "author": "Leo Brandt",
+            "publicationDate": "2026-03-28"
+          }
+        ],
+        "notes": "Initial draft with citations."
+      },
+      "createdAt": "2026-05-03T17:08:00.000Z"
+    },
+    {
+      "key": "edit",
+      "schema": "write",
+      "model": "gemini-3.1-pro-preview",
+      "promptSummary": "edit stage",
+      "response": {
+        "title": "Routines are turning into brand moats",
+        "subtitle": "Why trusted brands should write about systems, not just SKUs.",
+        "markdown": "# Routines are turning into brand moats\n\nConsumers are rewarding products that make repetitive tasks feel calmer, simpler, and more competent.[1]\n\n## Reliable delight is the new premium\n\nValue no longer means cheapness alone. It means dependable outcomes plus a small emotional payoff that justifies sticking with the brand.[2]\n\n## Systems beat single-product stories\n\nWinning brands show how products fit into a repeatable care system rather than a one-off purchase.[3]",
+        "footnotes": [
+          {
+            "number": 1,
+            "sourceId": "src-rituals",
+            "label": "Household rituals are replacing productivity hacks",
+            "url": "https://example.com/rituals-report"
+          },
+          {
+            "number": 2,
+            "sourceId": "src-value",
+            "label": "Value is being redefined as reliability plus delight",
+            "url": "https://example.com/value-premium"
+          },
+          {
+            "number": 3,
+            "sourceId": "src-care",
+            "label": "Care systems are replacing single-product stories",
+            "url": "https://example.com/care-systems"
+          }
+        ],
+        "attributions": [
+          {
+            "citation": 1,
+            "sourceId": "src-rituals",
+            "title": "Household rituals are replacing productivity hacks",
+            "url": "https://example.com/rituals-report",
+            "author": "Dana Fields",
+            "publicationDate": "2026-04-19"
+          },
+          {
+            "citation": 2,
+            "sourceId": "src-value",
+            "title": "Value is being redefined as reliability plus delight",
+            "url": "https://example.com/value-premium",
+            "author": "Mina Ortega",
+            "publicationDate": "2026-04-11"
+          },
+          {
+            "citation": 3,
+            "sourceId": "src-care",
+            "title": "Care systems are replacing single-product stories",
+            "url": "https://example.com/care-systems",
+            "author": "Leo Brandt",
+            "publicationDate": "2026-03-28"
+          }
+        ],
+        "notes": "Voice alignment pass."
+      },
+      "createdAt": "2026-05-03T17:09:00.000Z"
+    },
+    {
+      "key": "guardrails",
+      "schema": "write",
+      "model": "gemini-3.1-pro-preview",
+      "promptSummary": "guardrails stage",
+      "response": {
+        "title": "Routines are turning into brand moats",
+        "subtitle": "Why trusted brands should write about systems, not just SKUs.",
+        "markdown": "# Routines are turning into brand moats\n\nConsumers are rewarding products that make repetitive tasks feel calmer, simpler, and more competent.[1]\n\n## Reliable delight is the new premium\n\nValue no longer means cheapness alone. It means dependable outcomes plus a small emotional payoff that can reinforce loyalty when the product consistently performs.[2]\n\n## Systems beat single-product stories\n\nWinning brands show how products fit into a repeatable care system rather than a one-off purchase.[3]",
+        "footnotes": [
+          {
+            "number": 1,
+            "sourceId": "src-rituals",
+            "label": "Household rituals are replacing productivity hacks",
+            "url": "https://example.com/rituals-report"
+          },
+          {
+            "number": 2,
+            "sourceId": "src-value",
+            "label": "Value is being redefined as reliability plus delight",
+            "url": "https://example.com/value-premium"
+          },
+          {
+            "number": 3,
+            "sourceId": "src-care",
+            "label": "Care systems are replacing single-product stories",
+            "url": "https://example.com/care-systems"
+          }
+        ],
+        "attributions": [
+          {
+            "citation": 1,
+            "sourceId": "src-rituals",
+            "title": "Household rituals are replacing productivity hacks",
+            "url": "https://example.com/rituals-report",
+            "author": "Dana Fields",
+            "publicationDate": "2026-04-19"
+          },
+          {
+            "citation": 2,
+            "sourceId": "src-value",
+            "title": "Value is being redefined as reliability plus delight",
+            "url": "https://example.com/value-premium",
+            "author": "Mina Ortega",
+            "publicationDate": "2026-04-11"
+          },
+          {
+            "citation": 3,
+            "sourceId": "src-care",
+            "title": "Care systems are replacing single-product stories",
+            "url": "https://example.com/care-systems",
+            "author": "Leo Brandt",
+            "publicationDate": "2026-03-28"
+          }
+        ],
+        "notes": "Guardrails-only pass."
+      },
+      "createdAt": "2026-05-03T17:10:00.000Z"
+    }
+  ]
+}
