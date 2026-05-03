@@ -1,0 +1,39 @@
+model_list:
+  # Ollama models
+  - model_name: local-llama
+    litellm_params:
+      model: ollama/gemma4:latest
+      api_base: os.environ/OLLAMA_API_BASE
+
+  - model_name: local-coder
+    litellm_params:
+      model: ollama/qwen2.5-coder:7b
+      api_base: os.environ/OLLAMA_API_BASE
+
+  # OpenAI-hosted Codex model
+  - model_name: gpt-5.3-codex
+    litellm_params:
+      model: openai/os.environ/OPENAI_CODEX_MODEL
+      api_key: os.environ/OPENAI_API_KEY
+
+  # Claude alias exposed through the LiteLLM Anthropic-compatible surface
+  - model_name: claude-sonnet-4
+    litellm_params:
+      model: anthropic/os.environ/ANTHROPIC_CLAUDE_MODEL
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  # LM Studio OpenAI-compatible server
+  - model_name: lmstudio-local
+    litellm_params:
+      model: openai/lmstudio-local
+      api_base: http://host.docker.internal:1234/v1
+      api_key: lm-studio
+
+  # vLLM OpenAI-compatible server
+  - model_name: vllm-coder
+    litellm_params:
+      model: hosted_vllm/Qwen/Qwen2.5-Coder-7B-Instruct
+      api_base: http://host.docker.internal:8000/v1
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
