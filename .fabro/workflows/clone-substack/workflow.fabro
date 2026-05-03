@@ -24,10 +24,10 @@ GitHub to Railway validated by code review only — no live deployment execution
         retry_target="plan_fanout",
         fallback_retry_target="plan_fanout",
         model_stylesheet="
-            *          { model: claude-opus-4-6; backend: cli; }
-            .hard      { model: gpt-5.3-codex; backend: cli; }
-            .verify    { model: claude-opus-4-6; backend: cli; }
-            .branch-a  { model: claude-opus-4-6; backend: cli; }
+            *          { model: gpt-5.5-codex; backend: cli; }
+            .hard      { model: gpt-5.5-codex; backend: cli; }
+            .verify    { model: gpt-5.5-codex; backend: cli; }
+            .branch-a  { model: gpt-5.5-codex; backend: cli; }
             .branch-b  { model: gemini-3-flash-preview; backend: cli; }
         "
     ]
