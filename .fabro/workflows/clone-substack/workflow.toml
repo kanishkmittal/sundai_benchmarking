@@ -3,5 +3,21 @@ _version = 1
 [workflow]
 graph = "workflow.fabro"
 
+[run]
+goal = "Build a Substack article creator tool"
+
+[run.model]
+name = "claude-sonnet-4-6"
+
 [run.sandbox]
 provider = "local"
+
+[run.sandbox.local]
+# "never" keeps the workflow in the directory where fabro is invoked
+worktree_mode = "never"
+
+[run.sandbox.env]
+ANTHROPIC_API_KEY = ""
+
+[run.artifacts]
+include = ["*/.workflow/spec.md", "*/.workflow/definition_of_done.md", "*/.workflow/postmortem_latest.md", "*/.workflow/plan_a.md", "*/.workflow/plan_b.md", "*/.workflow/plan_final.md", "*/.workflow/verify_errors.log", "*/.workflow/verify_fidelity.md", "*/.workflow/test-evidence/latest/manifest.json", "*/.workflow/review_a.md", "*/.workflow/review_b.md", "*/.workflow/review_consensus.md", "*/.workflow/.workflow/implementation_log.md"]
