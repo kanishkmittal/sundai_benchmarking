@@ -171,3 +171,33 @@ A typical flow:
 2. Review and refine the proposal + tasks in `openspec/changes/<change>/`.
 3. Run a Fabro workflow (or `/openspec-apply-change`) to implement.
 4. Merge the PR, then `openspec archive <change>` to move it under `openspec/changes/archive/`.
+
+---
+
+## Using Claude Code with the Compute Community Qwen LLM
+
+To route Claude Code through the Compute Community Qwen endpoint instead of Anthropic's API, drop the following into `.claude/settings.local.json`:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://computecommunity.com/u/C7XfWXayLelTkySS7to8stLtwvV3Lj3J/nodes/runpod-qwen3-5-35b",
+    "ANTHROPIC_AUTH_TOKEN": "<your-token-from-compute-community-goes-here>",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "Qwen/Qwen3.6-35B-A3B-FP8",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "Qwen/Qwen3.6-35B-A3B-FP8",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "Qwen/Qwen3.6-35B-A3B-FP8",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "Qwen/Qwen3.6-35B-A3B-FP8",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "32768",
+    "MAX_THINKING_TOKENS": "8192",
+    "API_TIMEOUT_MS": "3000000",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_AUTOUPDATER": "1"
+  }
+}
+```
+
+Replace `<your-token-from-compute-community-goes-here>` with your Compute Community auth token. All three Anthropic model slots (Opus, Sonnet, Haiku) and the subagent model are pinned to the same Qwen model since the endpoint serves a single backing model.
