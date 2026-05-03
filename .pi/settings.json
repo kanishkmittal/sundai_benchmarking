@@ -1,0 +1,4 @@
+{
+  "defaultProvider": "ollama",
+  "defaultModel": "qwen2.5:32b"
+}
