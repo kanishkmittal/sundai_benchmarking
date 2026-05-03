@@ -1,3 +1,4 @@
 *.log
 settings.local.json
 fabro-repo/
+node_modules/

@@ -117,12 +117,16 @@ export function NewPostPage() {
   }
 
   async function handleResearch() {
+    const currentDraft = draft;
+    if (!currentDraft) {
+      return;
+    }
     try {
       setError("");
       const saved = await saveDraftRecord({
-        ...draft,
+        ...currentDraft,
         status: "topic",
-        promptSeed: draft.topic.text.trim()
+        promptSeed: currentDraft.topic.text.trim()
       });
       const researched = await runResearch(saved);
       setDraft(researched);
@@ -134,10 +138,14 @@ export function NewPostPage() {
   }
 
   async function handleContinueToOutline() {
+    const currentDraft = draft;
+    if (!currentDraft) {
+      return;
+    }
     try {
       setError("");
       const outlined = await runOutline({
-        ...draft,
+        ...currentDraft,
         status: "outline"
       });
       setDraft(outlined);
@@ -149,9 +157,13 @@ export function NewPostPage() {
   }
 
   async function toggleHighlight(sourceId: string) {
+    const currentDraft = draft;
+    if (!currentDraft) {
+      return;
+    }
     const next = await saveDraftRecord({
-      ...draft,
-      researchSources: draft.researchSources.map((source) =>
+      ...currentDraft,
+      researchSources: currentDraft.researchSources.map((source) =>
         source.id === sourceId ? { ...source, highlight: !source.highlight } : source
       )
     });
@@ -159,9 +171,15 @@ export function NewPostPage() {
   }
 
   async function removeSource(sourceId: string) {
+    const currentDraft = draft;
+    if (!currentDraft) {
+      return;
+    }
     const next = await saveDraftRecord({
-      ...draft,
-      researchSources: draft.researchSources.filter((source) => source.id !== sourceId)
+      ...currentDraft,
+      researchSources: currentDraft.researchSources.filter(
+        (source) => source.id !== sourceId
+      )
     });
     setDraft(next);
   }

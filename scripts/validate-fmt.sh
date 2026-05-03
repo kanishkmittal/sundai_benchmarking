@@ -19,7 +19,7 @@ fi
 
 cd "$APP_DIR"
 # shellcheck disable=SC2086
-npm exec -- prettier --check $TARGETS
+npm run fmt:check -- $TARGETS
 
 trap - EXIT
 echo "=== validate-fmt: PASS ==="

@@ -50,7 +50,7 @@ export function DemoModePage() {
     }
     if (stepIndex >= session.replaySteps.length - 1) {
       resetReplay();
-      navigate("/dashboard");
+      navigate("/dashboard?mode=demo");
       return;
     }
     setStepIndex((current) => current + 1);

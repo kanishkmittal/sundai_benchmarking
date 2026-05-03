@@ -21,6 +21,8 @@ interface SetupDocCardProps {
   value: RichInputValue;
   onChange: (value: RichInputValue) => void;
   testId: string;
+  complete: boolean;
+  savedSummary?: string;
   pending: boolean;
   confirmation: { input: RichInputValue; summary: string } | null;
   onSubmit: () => Promise<void>;
@@ -35,6 +37,8 @@ function SetupDocCard({
   value,
   onChange,
   testId,
+  complete,
+  savedSummary,
   pending,
   confirmation,
   onSubmit,
@@ -64,11 +68,14 @@ function SetupDocCard({
     <Card
       title={title}
       eyebrow={kind}
-      actions={<span className={`status-pill ${confirmation ? "is-done" : "is-empty"}`} />}
+      actions={<span className={`status-pill ${complete ? "is-done" : "is-empty"}`} />}
     >
       {!confirmation ? (
         <>
           <p className="muted">{description}</p>
+          {complete && savedSummary ? (
+            <p className="success-banner">{savedSummary}</p>
+          ) : null}
           <RichInput
             label={`${title} input`}
             testId={testId}
@@ -269,6 +276,8 @@ export function SettingsPage() {
           value={companyDraft}
           onChange={setCompanyDraft}
           testId={testIds.companyTextarea}
+          complete={setupStatus.company}
+          savedSummary={settings.company?.summary}
           pending={pendingKind === "company"}
           confirmation={confirmations.company}
           onSubmit={() => handleSubmit("company")}
@@ -288,6 +297,8 @@ export function SettingsPage() {
           value={voiceDraft}
           onChange={setVoiceDraft}
           testId={testIds.voiceTextarea}
+          complete={setupStatus.voice}
+          savedSummary={settings.voice?.summary}
           pending={pendingKind === "voice"}
           confirmation={confirmations.voice}
           onSubmit={() => handleSubmit("voice")}
@@ -307,6 +318,8 @@ export function SettingsPage() {
           value={guardrailsDraft}
           onChange={setGuardrailsDraft}
           testId={testIds.guardrailsTextarea}
+          complete={setupStatus.guardrails}
+          savedSummary={settings.guardrails?.summary}
           pending={pendingKind === "guardrails"}
           confirmation={confirmations.guardrails}
           onSubmit={() => handleSubmit("guardrails")}

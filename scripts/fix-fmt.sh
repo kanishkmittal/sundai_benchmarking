@@ -19,7 +19,7 @@ fi
 
 cd "$APP_DIR"
 # shellcheck disable=SC2086
-npm exec -- prettier --write $TARGETS
+npm run fmt:write -- $TARGETS
 
 trap - EXIT
 echo "=== fix-fmt: DONE ==="

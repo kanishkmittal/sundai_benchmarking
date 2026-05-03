@@ -1,7 +1,8 @@
+import { mkdir } from "node:fs/promises";
 import { createServer } from "node:http";
 import { access, readFile, stat } from "node:fs/promises";
 import { createReadStream } from "node:fs";
-import { extname, join, normalize } from "node:path";
+import { dirname, extname, join, normalize } from "node:path";
 
 import { StructuredLlmClient, createFixtureTransport } from "../../lib/llm";
 import { confirmDocumentSchema } from "../../lib/llm-schemas";
@@ -74,7 +75,7 @@ async function waitForTestApi(page: any): Promise<void> {
 }
 
 async function callTestApi(page: any, method: string): Promise<unknown> {
-  return page.evaluate(async (name) => {
+  return page.evaluate(async (name: string) => {
     const api = window.__substackTestApi;
     if (!api) {
       throw new Error("Test API not available");
@@ -115,9 +116,11 @@ async function runBrowserScenario(
   try {
     const summary = await execute(page);
     const screenshotPath = join(".workflow", "test-evidence", "latest", id, "screenshot.png");
+    await mkdir(dirname(screenshotPath), { recursive: true });
     await page.screenshot({ path: screenshotPath, fullPage: true });
     artifacts.push({ path: screenshotPath, type: "screenshot" });
     const tracePath = join(process.cwd(), ".workflow", "test-evidence", "latest", id, "trace.zip");
+    await mkdir(dirname(tracePath), { recursive: true });
     await context.tracing.stop({ path: tracePath });
     artifacts.push({ path: tracePath, type: "trace" });
     artifacts.push(
@@ -138,12 +141,14 @@ async function runBrowserScenario(
     const message = error instanceof Error ? error.message : "Unknown browser scenario failure";
     try {
       const screenshotPath = join(".workflow", "test-evidence", "latest", id, "failure.png");
+      await mkdir(dirname(screenshotPath), { recursive: true });
       await page.screenshot({ path: screenshotPath, fullPage: true });
       artifacts.push({ path: screenshotPath, type: "screenshot" });
     } catch {
       artifacts.push(await writePlaceholderScreenshot(id, "failure"));
     }
     const tracePath = join(process.cwd(), ".workflow", "test-evidence", "latest", id, "trace.zip");
+    await mkdir(dirname(tracePath), { recursive: true });
     await context.tracing.stop({ path: tracePath }).catch(() => undefined);
     artifacts.push({ path: tracePath, type: "trace" });
     artifacts.push(
@@ -259,7 +264,7 @@ async function main() {
         mode: "smoke",
         transport: async (request) => {
           assert(
-            request.model === "gemini-2.5-flash-lite",
+            request.model === "gemini-3.1-flash-lite-preview",
             "smoke mode did not route to Flash Lite"
           );
           return JSON.stringify({ summary: "smoke okay" });
@@ -486,7 +491,7 @@ async function main() {
         await callTestApi(page, "seedCacheMissSession");
         await page.goto(`${server.url}/demo?mode=demo`);
         await page.getByRole("button", { name: /Intentional cache gap/ }).click();
-        for (let index = 0; index < 8; index += 1) {
+        for (let index = 0; index < 9; index += 1) {
           await page.waitForSelector(`[data-testid="${testIds.demoNext}"]`);
           await page.click(`[data-testid="${testIds.demoNext}"]`);
         }
@@ -501,6 +506,10 @@ async function main() {
         await waitForTestApi(page);
         await callTestApi(page, "seedLibrary");
         await page.goto(`${server.url}/settings?mode=integration`);
+        await mkdir(
+          join(process.cwd(), ".workflow", "test-evidence", "latest", "IT-12"),
+          { recursive: true }
+        );
         await page.screenshot({
           path: join(process.cwd(), ".workflow", "test-evidence", "latest", "IT-12", "settings.png"),
           fullPage: true

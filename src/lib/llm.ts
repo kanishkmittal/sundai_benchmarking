@@ -13,22 +13,22 @@ const MODEL_NAMES: Record<Exclude<RuntimeMode, "demo">, Record<ModelAlias, strin
   production: {
     fast: "gemini-3-flash-preview",
     pro: "gemini-3.1-pro-preview",
-    lite: "gemini-2.5-flash-lite"
+    lite: "gemini-3.1-flash-lite-preview"
   },
   integration: {
-    fast: "gemini-2.5-flash-lite",
-    pro: "gemini-2.5-flash-lite",
-    lite: "gemini-2.5-flash-lite"
+    fast: "gemini-3.1-flash-lite-preview",
+    pro: "gemini-3.1-flash-lite-preview",
+    lite: "gemini-3.1-flash-lite-preview"
   },
   smoke: {
-    fast: "gemini-2.5-flash-lite",
-    pro: "gemini-2.5-flash-lite",
-    lite: "gemini-2.5-flash-lite"
+    fast: "gemini-3.1-flash-lite-preview",
+    pro: "gemini-3.1-flash-lite-preview",
+    lite: "gemini-3.1-flash-lite-preview"
   },
   manual: {
     fast: "gemini-3-flash-preview",
     pro: "gemini-3.1-pro-preview",
-    lite: "gemini-2.5-flash-lite"
+    lite: "gemini-3.1-flash-lite-preview"
   }
 };
 
@@ -192,9 +192,9 @@ export class StructuredLlmClient {
     const model = client.getGenerativeModel({
       model: request.model,
       generationConfig: {
-        temperature: 0.3,
-        responseMimeType: "application/json"
-      }
+        temperature: 0.3
+      },
+      tools: [{ googleSearch: {} } as never]
     });
     const response = await model.generateContent(request.prompt);
     return response.response.text();

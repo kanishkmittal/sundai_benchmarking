@@ -13,7 +13,10 @@ import { TrendingTopicsPage } from "./pages/TrendingTopics";
 import { testIds } from "./tests/browser/testIds";
 
 function ProtectedRoute({ children }: { children: ReactElement }) {
-  const { settings } = useAppState();
+  const { settings, mode } = useAppState();
+  if (mode === "demo") {
+    return children;
+  }
   if (!isSettingsComplete(settings)) {
     return <Navigate replace to="/settings" />;
   }

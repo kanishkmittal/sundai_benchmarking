@@ -19,7 +19,7 @@ describe("smoke scenarios", () => {
         'Return JSON with one short summary about how smoke mode works: {"summary":"..."}'
     });
 
-    expect(result.model).toBe("gemini-2.5-flash-lite");
+    expect(result.model).toBe("gemini-3.1-flash-lite-preview");
     expect(result.data.summary.length).toBeGreaterThan(0);
   });
 });
