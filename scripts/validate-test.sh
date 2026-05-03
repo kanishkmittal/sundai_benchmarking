@@ -17,14 +17,18 @@ cd "$APP_DIR"
 STATUS=0
 
 echo "=== validate-test: running integration tests ==="
-if ! npm test >"$TEST_LOG" 2>&1; then
+if npm test >"$TEST_LOG" 2>&1; then
+  :
+else
   STATUS=$?
 fi
 
 if [ "$STATUS" -eq 0 ]; then
   echo "=== validate-test: smoke tests ==="
   if [ -n "${GEMINI_API_KEY:-}" ]; then
-    if ! npm run test:smoke >"$SMOKE_LOG" 2>&1; then
+    if npm run test:smoke >"$SMOKE_LOG" 2>&1; then
+      :
+    else
       STATUS=$?
     fi
   else
