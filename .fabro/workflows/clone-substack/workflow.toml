@@ -14,7 +14,7 @@ provider = "local"
 
 [run.sandbox.local]
 # "never" keeps the workflow in the directory where fabro is invoked
-worktree_mode = "never"
+worktree_mode = "always"
 
 [run.sandbox.env]
 ANTHROPIC_API_KEY = ""
