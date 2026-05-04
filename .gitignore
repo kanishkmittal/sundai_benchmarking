@@ -2,3 +2,6 @@
 settings.local.json
 fabro-repo/
 node_modules/
+dist/
+.workflow/test-evidence/
+.ai/test-evidence/
