@@ -3,7 +3,7 @@
 This repo is set up to use two spec-driven tooling layers:
 
 - **[OpenSpec](https://github.com/Fission-AI/OpenSpec)** — manages capability specs and proposed changes that AI coding assistants read before they implement work.
-- **[Fabro](https://docs.fabro.computer/)** — runs spec-driven workflows (proposals, tasks, PRs) with a configurable project context.
+- **[Fabro](https://docs.fabro.sh/)** — runs spec-driven workflows (proposals, tasks, PRs) with a configurable project context.
 
 Both tools have **already been initialized** in this repo. You only need to install the CLIs locally, then run normal commands.
 
@@ -68,11 +68,11 @@ Inside Claude Code, the OpenSpec workflow is also available as slash skills:
 
 ### Install
 
-Follow the [Fabro quick start](https://docs.fabro.computer/getting-started/quick-start) to install the CLI and authenticate:
+Follow the [Fabro quick start](https://docs.fabro.sh/getting-started/quick-start) to install the CLI and authenticate:
 
 ```bash
 # install (see Fabro docs for the current command)
-curl -fsSL https://fabro.computer/install.sh | sh
+curl -fsSL https://fabro.sh/install.sh | sh
 
 # log in
 fabro auth login
@@ -116,7 +116,7 @@ fabro model list                # list available models/providers
 fabro run --preflight <file>    # validate without executing
 ```
 
-See `fabro --help` and the [docs](https://docs.fabro.computer/) for the full surface.
+See `fabro --help` and the [docs](https://docs.fabro.sh/) for the full surface.
 
 ### Authoring new workflows with the `fabro-create-workflow` skill
 
