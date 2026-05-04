@@ -1,0 +1,185 @@
+{
+  "generatedAt": "2026-05-04T00:51:12.086Z",
+  "scenarios": [
+    {
+      "id": "IT-1",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-1/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-1/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-2",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-2/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-2/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-3",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-3/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-3/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-4",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-4/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-4/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-5",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-5/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-5/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-6",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-6/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-6/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-7",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-7/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-7/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-8",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-8/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-8/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-9",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-9/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-9/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-10",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-10/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-10/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-11",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-11/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-11/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "IT-12",
+      "status": "fail",
+      "summary": "browserType.launch: Executable doesn't exist at /Users/backlit/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at launchBrowser (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:74:44)\n    at main (/Users/backlit/Documents/code/sundai_benchmarking/src/tests/browser/runScenarios.ts:420:25)",
+      "artifacts": [
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-12/fatal.txt",
+          "type": "log"
+        },
+        {
+          "path": "/Users/backlit/Documents/code/sundai_benchmarking/.workflow/test-evidence/latest/IT-12/screenshot.png",
+          "type": "screenshot"
+        }
+      ]
+    }
+  ]
+}

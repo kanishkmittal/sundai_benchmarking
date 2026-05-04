@@ -13,7 +13,7 @@ export function PostViewPage() {
 
   const post = useMemo(
     () => posts.find((entry) => entry.id === postId) ?? null,
-    [posts, postId]
+    [posts, postId],
   );
 
   return (

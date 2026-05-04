@@ -9,14 +9,14 @@ describe("smoke scenarios", () => {
   it.skipIf(!apiKey)("uses Flash Lite for smoke mode", async () => {
     const client = new StructuredLlmClient({
       apiKey,
-      mode: "smoke"
+      mode: "smoke",
     });
 
     const result = await client.generate({
       model: "pro",
       schema: confirmDocumentSchema,
       prompt:
-        'Return JSON with one short summary about how smoke mode works: {"summary":"..."}'
+        'Return JSON with one short summary about how smoke mode works: {"summary":"..."}',
     });
 
     expect(result.model).toBe("gemini-3.1-flash-lite-preview");

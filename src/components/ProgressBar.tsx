@@ -13,10 +13,7 @@ export function ProgressBar({ label, value }: ProgressBarProps) {
         <span>{normalized}%</span>
       </div>
       <div className="progress__track">
-        <div
-          className="progress__fill"
-          style={{ width: `${normalized}%` }}
-        />
+        <div className="progress__fill" style={{ width: `${normalized}%` }} />
       </div>
     </div>
   );

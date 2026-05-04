@@ -15,7 +15,7 @@ function createAttachment(file: File, content: string): AttachmentRecord {
     id: `${file.name}-${file.lastModified}`,
     name: file.name,
     mimeType: file.type || "text/plain",
-    content
+    content,
   };
 }
 
@@ -24,7 +24,7 @@ export function RichInput({
   value,
   onChange,
   placeholder,
-  testId
+  testId,
 }: RichInputProps) {
   const inputId = useId();
   const fileRef = useRef<HTMLInputElement | null>(null);
@@ -44,7 +44,7 @@ export function RichInput({
         onChange={(event) =>
           onChange({
             ...value,
-            text: event.target.value
+            text: event.target.value,
           })
         }
       />
@@ -74,7 +74,7 @@ export function RichInput({
               }
               onChange({
                 ...value,
-                links: [...value.links, trimmed]
+                links: [...value.links, trimmed],
               });
               setLinkDraft("");
             }}
@@ -96,16 +96,18 @@ export function RichInput({
                 new Promise<AttachmentRecord>((resolve, reject) => {
                   const reader = new FileReader();
                   reader.onload = () => {
-                    resolve(createAttachment(file, String(reader.result ?? "")));
+                    resolve(
+                      createAttachment(file, String(reader.result ?? "")),
+                    );
                   };
                   reader.onerror = () => reject(reader.error);
                   reader.readAsText(file);
-                })
-            )
+                }),
+            ),
           );
           onChange({
             ...value,
-            attachments: [...value.attachments, ...attachments]
+            attachments: [...value.attachments, ...attachments],
           });
           event.target.value = "";
         }}

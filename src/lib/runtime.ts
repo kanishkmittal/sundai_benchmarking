@@ -5,7 +5,7 @@ const ALLOWED_MODES: RuntimeMode[] = [
   "integration",
   "smoke",
   "manual",
-  "demo"
+  "demo",
 ];
 
 declare global {
@@ -22,11 +22,15 @@ declare global {
   }
 }
 
-export function normalizeMode(value: string | null | undefined): RuntimeMode | null {
+export function normalizeMode(
+  value: string | null | undefined,
+): RuntimeMode | null {
   if (!value) {
     return null;
   }
-  return ALLOWED_MODES.includes(value as RuntimeMode) ? (value as RuntimeMode) : null;
+  return ALLOWED_MODES.includes(value as RuntimeMode)
+    ? (value as RuntimeMode)
+    : null;
 }
 
 export function resolveRuntimeMode(search?: string): RuntimeMode {

@@ -4,32 +4,35 @@ import type {
   LlmAttempt,
   ModelAlias,
   RuntimeMode,
-  StructuredResult
+  StructuredResult,
 } from "./types";
 import { parseStructuredJson, type SchemaDefinition } from "./llm-schemas";
 import { usesFixtures, usesLiteModels } from "./runtime";
 
-const MODEL_NAMES: Record<Exclude<RuntimeMode, "demo">, Record<ModelAlias, string>> = {
+const MODEL_NAMES: Record<
+  Exclude<RuntimeMode, "demo">,
+  Record<ModelAlias, string>
+> = {
   production: {
     fast: "gemini-3-flash-preview",
     pro: "gemini-3.1-pro-preview",
-    lite: "gemini-3.1-flash-lite-preview"
+    lite: "gemini-3.1-flash-lite-preview",
   },
   integration: {
     fast: "gemini-3.1-flash-lite-preview",
     pro: "gemini-3.1-flash-lite-preview",
-    lite: "gemini-3.1-flash-lite-preview"
+    lite: "gemini-3.1-flash-lite-preview",
   },
   smoke: {
     fast: "gemini-3.1-flash-lite-preview",
     pro: "gemini-3.1-flash-lite-preview",
-    lite: "gemini-3.1-flash-lite-preview"
+    lite: "gemini-3.1-flash-lite-preview",
   },
   manual: {
     fast: "gemini-3-flash-preview",
     pro: "gemini-3.1-pro-preview",
-    lite: "gemini-3.1-flash-lite-preview"
-  }
+    lite: "gemini-3.1-flash-lite-preview",
+  },
 };
 
 export interface StructuredTransportRequest {
@@ -40,7 +43,7 @@ export interface StructuredTransportRequest {
 }
 
 export type StructuredTransport = (
-  request: StructuredTransportRequest
+  request: StructuredTransportRequest,
 ) => Promise<string>;
 
 export interface StructuredClientOptions {
@@ -79,7 +82,7 @@ function buildPrompt<T>(prompt: string, schema: SchemaDefinition<T>): string {
     `Schema name: ${schema.name}.`,
     `Expected shape: ${schema.explain}`,
     "",
-    prompt
+    prompt,
   ].join("\n");
 }
 
@@ -118,20 +121,20 @@ export class StructuredLlmClient {
           cacheKey: request.cacheKey,
           model,
           prompt,
-          schemaName: request.schema.name
+          schemaName: request.schema.name,
         });
         const data = parseStructuredJson(request.schema, rawText);
         attempts.push({
           attempt,
           model,
           prompt,
-          rawText
+          rawText,
         });
         return {
           data,
           rawText,
           model,
-          attempts
+          attempts,
         };
       } catch (error) {
         const message =
@@ -147,12 +150,12 @@ export class StructuredLlmClient {
           prompt,
           rawText,
           error: message,
-          delayMs
+          delayMs,
         });
 
         if (index >= this.maxRetries - 1) {
           throw new Error(
-            `Structured generation failed after ${attempt} attempts: ${message}`
+            `Structured generation failed after ${attempt} attempts: ${message}`,
           );
         }
 
@@ -161,9 +164,11 @@ export class StructuredLlmClient {
           "",
           "The previous response was invalid.",
           `Validation error: ${message}`,
-          rawText ? `Invalid response:\n${rawText}` : "No response body was returned.",
+          rawText
+            ? `Invalid response:\n${rawText}`
+            : "No response body was returned.",
           "",
-          "Try again. Return JSON only."
+          "Try again. Return JSON only.",
         ].join("\n");
 
         await sleep(delayMs);
@@ -174,7 +179,7 @@ export class StructuredLlmClient {
   }
 
   private async runTransport(
-    request: StructuredTransportRequest
+    request: StructuredTransportRequest,
   ): Promise<string> {
     if (this.transport) {
       return this.transport(request);
@@ -192,9 +197,9 @@ export class StructuredLlmClient {
     const model = client.getGenerativeModel({
       model: request.model,
       generationConfig: {
-        temperature: 0.3
+        temperature: 0.3,
       },
-      tools: [{ googleSearch: {} } as never]
+      tools: [{ googleSearch: {} } as never],
     });
     const response = await model.generateContent(request.prompt);
     return response.response.text();
@@ -202,7 +207,7 @@ export class StructuredLlmClient {
 }
 
 export function createFixtureTransport(
-  fixtures: Record<string, unknown | unknown[]>
+  fixtures: Record<string, unknown | unknown[]>,
 ): StructuredTransport {
   const counters = new Map<string, number>();
 

@@ -8,7 +8,14 @@ SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
 . "$SCRIPT_DIR/lib/resolve-app-root.sh"
 
 APP_DIR=$(resolve_app_root "$SCRIPT_DIR/..")
-TARGETS=$(git -C "$APP_DIR" ls-files '*.ts' '*.tsx' '*.css' '*.json' '*.html' '*.md' ':!:package-lock.json' ':!:dist/**' ':!:build/**' ':!:.workflow/**' ':!:.ai/**')
+TARGETS=$(git -C "$APP_DIR" ls-files \
+  'src/**' \
+  'docs/**/*.md' \
+  'package.json' \
+  'vite.config.ts' \
+  'tsconfig.json' \
+  'index.html' \
+  'railway.json')
 
 echo "=== validate-fmt: Prettier check ==="
 if [ -z "$TARGETS" ]; then

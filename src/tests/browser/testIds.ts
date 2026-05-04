@@ -35,5 +35,5 @@ export const testIds = {
   resetCancel: "reset-cancel",
   demoPicker: "demo-picker",
   demoNext: "demo-next",
-  demoDismissError: "demo-dismiss-error"
+  demoDismissError: "demo-dismiss-error",
 } as const;

@@ -1,7 +1,10 @@
 import type { FinalPost, PostRecord, ResearchSource } from "../lib/types";
 
 interface PostViewerProps {
-  post: Pick<PostRecord, "title" | "subtitle" | "markdown" | "footnotes" | "attributions"> &
+  post: Pick<
+    PostRecord,
+    "title" | "subtitle" | "markdown" | "footnotes" | "attributions"
+  > &
     Pick<FinalPost, "createdAt">;
   sources: ResearchSource[];
 }
@@ -42,9 +45,11 @@ export function PostViewer({ post, sources }: PostViewerProps) {
         <ol>
           {post.footnotes.map((footnote) => {
             const attribution = post.attributions.find(
-              (entry) => entry.citation === footnote.number
+              (entry) => entry.citation === footnote.number,
             );
-            const source = sources.find((entry) => entry.id === footnote.sourceId);
+            const source = sources.find(
+              (entry) => entry.id === footnote.sourceId,
+            );
             return (
               <li key={footnote.number}>
                 <a href={footnote.url} rel="noreferrer" target="_blank">

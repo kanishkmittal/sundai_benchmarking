@@ -12,18 +12,18 @@ describe("manual mode", () => {
     async () => {
       const client = new StructuredLlmClient({
         apiKey,
-        mode: "manual"
+        mode: "manual",
       });
 
       const result = await client.generate({
         model: "pro",
         schema: confirmDocumentSchema,
         prompt:
-          'Return JSON with one short summary proving manual mode is working: {"summary":"..."}'
+          'Return JSON with one short summary proving manual mode is working: {"summary":"..."}',
       });
 
       expect(result.model).toBe("gemini-3.1-pro-preview");
       expect(result.data.summary.length).toBeGreaterThan(0);
-    }
+    },
   );
 });

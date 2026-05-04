@@ -34,7 +34,9 @@ function AppRoutes() {
     );
   }
 
-  const defaultRoute = isSettingsComplete(settings) ? "/dashboard" : "/settings";
+  const defaultRoute = isSettingsComplete(settings)
+    ? "/dashboard"
+    : "/settings";
 
   return (
     <Routes>

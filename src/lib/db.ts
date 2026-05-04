@@ -5,7 +5,7 @@ import type {
   DraftRecord,
   PostRecord,
   SessionRecord,
-  SettingsRecord
+  SettingsRecord,
 } from "./types";
 import { createEmptySettings } from "./types";
 
@@ -41,7 +41,7 @@ const memoryStore: MemoryStore = {
   configuration: new Map<string, SettingsRecord>(),
   drafts: new Map<string, DraftRecord>(),
   posts: new Map<string, PostRecord>(),
-  sessions: new Map<string, SessionRecord>()
+  sessions: new Map<string, SessionRecord>(),
 };
 
 let dbPromise: Promise<IDBPDatabase<NewsletterDb>> | null = null;
@@ -66,7 +66,7 @@ function getDb(): Promise<IDBPDatabase<NewsletterDb>> {
         if (!database.objectStoreNames.contains("sessions")) {
           database.createObjectStore("sessions", { keyPath: "id" });
         }
-      }
+      },
     });
   }
   return dbPromise;
@@ -110,12 +110,12 @@ export async function getDraft(id: string): Promise<DraftRecord | null> {
 export async function listDrafts(): Promise<DraftRecord[]> {
   if (!hasIndexedDb()) {
     return [...memoryStore.drafts.values()].sort((left, right) =>
-      right.updatedAt.localeCompare(left.updatedAt)
+      right.updatedAt.localeCompare(left.updatedAt),
     );
   }
   const db = await getDb();
   return (await db.getAll("drafts")).sort((left, right) =>
-    right.updatedAt.localeCompare(left.updatedAt)
+    right.updatedAt.localeCompare(left.updatedAt),
   );
 }
 
@@ -148,12 +148,12 @@ export async function getPost(id: string): Promise<PostRecord | null> {
 export async function listPosts(): Promise<PostRecord[]> {
   if (!hasIndexedDb()) {
     return [...memoryStore.posts.values()].sort((left, right) =>
-      right.createdAt.localeCompare(left.createdAt)
+      right.createdAt.localeCompare(left.createdAt),
     );
   }
   const db = await getDb();
   return (await db.getAll("posts")).sort((left, right) =>
-    right.createdAt.localeCompare(left.createdAt)
+    right.createdAt.localeCompare(left.createdAt),
   );
 }
 
@@ -177,12 +177,12 @@ export async function getSession(id: string): Promise<SessionRecord | null> {
 export async function listSessions(): Promise<SessionRecord[]> {
   if (!hasIndexedDb()) {
     return [...memoryStore.sessions.values()].sort((left, right) =>
-      right.createdAt.localeCompare(left.createdAt)
+      right.createdAt.localeCompare(left.createdAt),
     );
   }
   const db = await getDb();
   return (await db.getAll("sessions")).sort((left, right) =>
-    right.createdAt.localeCompare(left.createdAt)
+    right.createdAt.localeCompare(left.createdAt),
   );
 }
 
@@ -199,7 +199,7 @@ export async function clearAllData(): Promise<void> {
     db.clear("configuration"),
     db.clear("drafts"),
     db.clear("posts"),
-    db.clear("sessions")
+    db.clear("sessions"),
   ]);
 }
 
@@ -221,13 +221,13 @@ export async function snapshotDatabase(): Promise<{
     loadSettings(),
     listDrafts(),
     listPosts(),
-    listSessions()
+    listSessions(),
   ]);
 
   return {
     settings,
     drafts,
     posts,
-    sessions
+    sessions,
   };
 }

@@ -1,7 +1,11 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
-import type { EvidenceManifest, ManifestArtifact, ManifestScenario } from "../../lib/types";
+import type {
+  EvidenceManifest,
+  ManifestArtifact,
+  ManifestScenario,
+} from "../../lib/types";
 
 const FALLBACK_PNG = Buffer.alloc(6144, 1);
 
@@ -24,7 +28,7 @@ export async function ensureEvidenceRoots(): Promise<void> {
 
 export async function writeArtifact(
   relativePath: string,
-  contents: string | Uint8Array
+  contents: string | Uint8Array,
 ): Promise<string> {
   const workflowPath = join(workflowEvidenceRoot(), relativePath);
   const aiPath = join(aiEvidenceRoot(), relativePath);
@@ -39,45 +43,47 @@ export async function writeArtifact(
 export async function writeTextArtifact(
   scenarioId: string,
   name: string,
-  contents: string
+  contents: string,
 ): Promise<ManifestArtifact> {
   const path = await writeArtifact(`${scenarioId}/${name}.txt`, contents);
   return {
     path,
-    type: "log"
+    type: "log",
   };
 }
 
 export async function writeJsonArtifact(
   scenarioId: string,
   name: string,
-  value: unknown
+  value: unknown,
 ): Promise<ManifestArtifact> {
   const path = await writeArtifact(
     `${scenarioId}/${name}.json`,
-    JSON.stringify(value, null, 2)
+    JSON.stringify(value, null, 2),
   );
   return {
     path,
-    type: "json"
+    type: "json",
   };
 }
 
 export async function writePlaceholderScreenshot(
   scenarioId: string,
-  name = "screenshot"
+  name = "screenshot",
 ): Promise<ManifestArtifact> {
   const path = await writeArtifact(`${scenarioId}/${name}.png`, FALLBACK_PNG);
   return {
     path,
-    type: "screenshot"
+    type: "screenshot",
   };
 }
 
-export async function writeManifest(scenarios: ManifestScenario[]): Promise<string> {
+export async function writeManifest(
+  scenarios: ManifestScenario[],
+): Promise<string> {
   const manifest: EvidenceManifest = {
     generatedAt: new Date().toISOString(),
-    scenarios
+    scenarios,
   };
   return writeArtifact("manifest.json", JSON.stringify(manifest, null, 2));
 }

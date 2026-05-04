@@ -43,7 +43,7 @@ function SetupDocCard({
   confirmation,
   onSubmit,
   onConfirm,
-  onBack
+  onBack,
 }: SetupDocCardProps) {
   const submitId =
     kind === "company"
@@ -68,7 +68,9 @@ function SetupDocCard({
     <Card
       title={title}
       eyebrow={kind}
-      actions={<span className={`status-pill ${complete ? "is-done" : "is-empty"}`} />}
+      actions={
+        <span className={`status-pill ${complete ? "is-done" : "is-empty"}`} />
+      }
     >
       {!confirmation ? (
         <>
@@ -83,7 +85,9 @@ function SetupDocCard({
             onChange={onChange}
             placeholder={`Write the ${kind} guidance here.`}
           />
-          {pending ? <ProgressBar label={`Confirming ${kind}`} value={72} /> : null}
+          {pending ? (
+            <ProgressBar label={`Confirming ${kind}`} value={72} />
+          ) : null}
           <button
             className="button"
             data-testid={submitId}
@@ -128,26 +132,32 @@ export function SettingsPage() {
     saveApiKey,
     generateConfirmation,
     saveConfirmedDocument,
-    resetAll
+    resetAll,
   } = useAppState();
   const setupStatus = useSetupStatus();
   const [apiKeyDraft, setApiKeyDraft] = useState(settings.apiKey);
   const [companyDraft, setCompanyDraft] = useState(
-    settings.company ? cloneRichInput(settings.company.input) : createEmptyRichInput()
+    settings.company
+      ? cloneRichInput(settings.company.input)
+      : createEmptyRichInput(),
   );
   const [voiceDraft, setVoiceDraft] = useState(
-    settings.voice ? cloneRichInput(settings.voice.input) : createEmptyRichInput()
+    settings.voice
+      ? cloneRichInput(settings.voice.input)
+      : createEmptyRichInput(),
   );
   const [guardrailsDraft, setGuardrailsDraft] = useState(
     settings.guardrails
       ? cloneRichInput(settings.guardrails.input)
-      : createEmptyRichInput()
+      : createEmptyRichInput(),
   );
-  const [pendingKind, setPendingKind] = useState<SetupDocumentKind | null>(null);
+  const [pendingKind, setPendingKind] = useState<SetupDocumentKind | null>(
+    null,
+  );
   const [confirmations, setConfirmations] = useState<ConfirmationState>({
     company: null,
     voice: null,
-    guardrails: null
+    guardrails: null,
   });
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [error, setError] = useState("");
@@ -158,13 +168,17 @@ export function SettingsPage() {
 
   useEffect(() => {
     setCompanyDraft(
-      settings.company ? cloneRichInput(settings.company.input) : createEmptyRichInput()
+      settings.company
+        ? cloneRichInput(settings.company.input)
+        : createEmptyRichInput(),
     );
   }, [settings.company]);
 
   useEffect(() => {
     setVoiceDraft(
-      settings.voice ? cloneRichInput(settings.voice.input) : createEmptyRichInput()
+      settings.voice
+        ? cloneRichInput(settings.voice.input)
+        : createEmptyRichInput(),
     );
   }, [settings.voice]);
 
@@ -172,7 +186,7 @@ export function SettingsPage() {
     setGuardrailsDraft(
       settings.guardrails
         ? cloneRichInput(settings.guardrails.input)
-        : createEmptyRichInput()
+        : createEmptyRichInput(),
     );
   }, [settings.guardrails]);
 
@@ -191,14 +205,14 @@ export function SettingsPage() {
         ...current,
         [kind]: {
           input,
-          summary
-        }
+          summary,
+        },
       }));
     } catch (submissionError) {
       setError(
         submissionError instanceof Error
           ? submissionError.message
-          : "Unable to confirm the setup document."
+          : "Unable to confirm the setup document.",
       );
     } finally {
       setPendingKind(null);
@@ -213,7 +227,7 @@ export function SettingsPage() {
     await saveConfirmedDocument(kind, confirmation.input, confirmation.summary);
     setConfirmations((current) => ({
       ...current,
-      [kind]: null
+      [kind]: null,
     }));
   }
 
@@ -224,8 +238,7 @@ export function SettingsPage() {
           <p className="eyebrow">Substack Creator</p>
           <h1>Settings</h1>
           <p className="lede">
-            Complete API key, company, voice, and guardrails in any order. Mode:
-            {" "}
+            Complete API key, company, voice, and guardrails in any order. Mode:{" "}
             <strong>{mode}</strong>
           </p>
         </div>
@@ -245,7 +258,11 @@ export function SettingsPage() {
         <Card
           title="API key"
           eyebrow="Required"
-          actions={<span className={`status-pill ${setupStatus.apiKey ? "is-done" : "is-empty"}`} />}
+          actions={
+            <span
+              className={`status-pill ${setupStatus.apiKey ? "is-done" : "is-empty"}`}
+            />
+          }
         >
           <label className="rich-input__label" htmlFor="api-key">
             Gemini API key
@@ -285,7 +302,7 @@ export function SettingsPage() {
           onBack={() =>
             setConfirmations((current) => ({
               ...current,
-              company: null
+              company: null,
             }))
           }
         />
@@ -306,7 +323,7 @@ export function SettingsPage() {
           onBack={() =>
             setConfirmations((current) => ({
               ...current,
-              voice: null
+              voice: null,
             }))
           }
         />
@@ -327,7 +344,7 @@ export function SettingsPage() {
           onBack={() =>
             setConfirmations((current) => ({
               ...current,
-              guardrails: null
+              guardrails: null,
             }))
           }
         />

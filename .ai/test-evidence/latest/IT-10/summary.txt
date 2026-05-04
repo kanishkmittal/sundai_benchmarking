@@ -1,0 +1,1 @@
+Integration before smoke is enforced by validate-test.sh, and model routing covers smoke/manual modes.

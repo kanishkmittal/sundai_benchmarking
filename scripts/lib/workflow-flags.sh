@@ -28,8 +28,15 @@ sync_manifest() {
   SOURCE_PATH=$1
 
   ensure_evidence_dirs
-  cp "$SOURCE_PATH" "$(workflow_manifest_path)"
-  cp "$SOURCE_PATH" "$(ai_manifest_path)"
+  WORKFLOW_TARGET=$(workflow_manifest_path)
+  AI_TARGET=$(ai_manifest_path)
+
+  if [ "$(cd "$(dirname "$SOURCE_PATH")" && pwd)/$(basename "$SOURCE_PATH")" != "$(cd "$(dirname "$WORKFLOW_TARGET")" && pwd)/$(basename "$WORKFLOW_TARGET")" ]; then
+    cp "$SOURCE_PATH" "$WORKFLOW_TARGET"
+  fi
+  if [ "$(cd "$(dirname "$SOURCE_PATH")" && pwd)/$(basename "$SOURCE_PATH")" != "$(cd "$(dirname "$AI_TARGET")" && pwd)/$(basename "$AI_TARGET")" ]; then
+    cp "$SOURCE_PATH" "$AI_TARGET"
+  fi
 }
 
 write_manifest_stub() {

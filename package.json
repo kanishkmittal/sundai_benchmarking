@@ -11,7 +11,7 @@
     "test:integration": "vitest run src/__tests__/integration/scenarios.test.ts",
     "test:smoke": "vitest run src/__tests__/smoke/scenarios.smoke.test.ts",
     "test:manual": "vitest run src/__tests__/manual/manual-mode.test.ts",
-    "verify:browser": "tsx src/tests/browser/runScenarios.ts",
+    "verify:browser": "node --import tsx src/tests/browser/runScenarios.ts",
     "fmt:check": "prettier --check",
     "fmt:write": "prettier --write",
     "validate:fmt": "sh scripts/validate-fmt.sh",

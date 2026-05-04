@@ -8,7 +8,11 @@ export function StepIndicator({ currentStep, labels }: StepIndicatorProps) {
     <ol className="step-indicator" aria-label="Progress">
       {labels.map((label, index) => {
         const state =
-          index < currentStep ? "done" : index === currentStep ? "current" : "future";
+          index < currentStep
+            ? "done"
+            : index === currentStep
+              ? "current"
+              : "future";
         return (
           <li
             key={label}

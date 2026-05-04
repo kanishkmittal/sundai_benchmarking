@@ -10,7 +10,7 @@ export const expectedScenarioIds = [
   "IT-9",
   "IT-10",
   "IT-11",
-  "IT-12"
+  "IT-12",
 ] as const;
 
 export type ScenarioId = (typeof expectedScenarioIds)[number];
@@ -24,5 +24,5 @@ export const browserScenarioIds: ScenarioId[] = [
   "IT-7",
   "IT-8",
   "IT-11",
-  "IT-12"
+  "IT-12",
 ];

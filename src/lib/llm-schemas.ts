@@ -4,7 +4,7 @@ import type {
   ResearchResponse,
   TrendingPromptResponse,
   TrendingResearchResponse,
-  WriteResponse
+  WriteResponse,
 } from "./types";
 
 export interface SchemaDefinition<T> {
@@ -26,49 +26,51 @@ function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every(isString);
 }
 
-export const confirmDocumentSchema: SchemaDefinition<ConfirmDocumentResponse> = {
-  name: "confirmDocument",
-  description: "A short summary confirming the document intent and quality.",
-  explain: '{ "summary": "string" }',
-  validate(value): value is ConfirmDocumentResponse {
-    return isRecord(value) && isString(value.summary);
-  }
-};
+export const confirmDocumentSchema: SchemaDefinition<ConfirmDocumentResponse> =
+  {
+    name: "confirmDocument",
+    description: "A short summary confirming the document intent and quality.",
+    explain: '{ "summary": "string" }',
+    validate(value): value is ConfirmDocumentResponse {
+      return isRecord(value) && isString(value.summary);
+    },
+  };
 
-export const trendingResearchSchema: SchemaDefinition<TrendingResearchResponse> = {
-  name: "trendingResearch",
-  description: "Parallel trend research results with sources.",
-  explain:
-    '{ "trends": [{ "id": "string", "label": "string", "momentum": 1, "summary": "string", "sources": [{ "id": "string", "url": "string", "title": "string", "author": "string", "publicationDate": "string", "snippet": "string", "highlight": true }] }] }',
-  validate(value): value is TrendingResearchResponse {
-    return (
-      isRecord(value) &&
-      Array.isArray(value.trends) &&
-      value.trends.every((trend) => {
-        return (
-          isRecord(trend) &&
-          isString(trend.id) &&
-          isString(trend.label) &&
-          typeof trend.momentum === "number" &&
-          isString(trend.summary) &&
-          Array.isArray(trend.sources) &&
-          trend.sources.every((source) => {
-            return (
-              isRecord(source) &&
-              isString(source.id) &&
-              isString(source.url) &&
-              isString(source.title) &&
-              isString(source.author) &&
-              isString(source.publicationDate) &&
-              isString(source.snippet) &&
-              typeof source.highlight === "boolean"
-            );
-          })
-        );
-      })
-    );
-  }
-};
+export const trendingResearchSchema: SchemaDefinition<TrendingResearchResponse> =
+  {
+    name: "trendingResearch",
+    description: "Parallel trend research results with sources.",
+    explain:
+      '{ "trends": [{ "id": "string", "label": "string", "momentum": 1, "summary": "string", "sources": [{ "id": "string", "url": "string", "title": "string", "author": "string", "publicationDate": "string", "snippet": "string", "highlight": true }] }] }',
+    validate(value): value is TrendingResearchResponse {
+      return (
+        isRecord(value) &&
+        Array.isArray(value.trends) &&
+        value.trends.every((trend) => {
+          return (
+            isRecord(trend) &&
+            isString(trend.id) &&
+            isString(trend.label) &&
+            typeof trend.momentum === "number" &&
+            isString(trend.summary) &&
+            Array.isArray(trend.sources) &&
+            trend.sources.every((source) => {
+              return (
+                isRecord(source) &&
+                isString(source.id) &&
+                isString(source.url) &&
+                isString(source.title) &&
+                isString(source.author) &&
+                isString(source.publicationDate) &&
+                isString(source.snippet) &&
+                typeof source.highlight === "boolean"
+              );
+            })
+          );
+        })
+      );
+    },
+  };
 
 export const trendingPromptSchema: SchemaDefinition<TrendingPromptResponse> = {
   name: "trendingPrompts",
@@ -90,7 +92,7 @@ export const trendingPromptSchema: SchemaDefinition<TrendingPromptResponse> = {
         );
       })
     );
-  }
+  },
 };
 
 export const researchSchema: SchemaDefinition<ResearchResponse> = {
@@ -115,7 +117,7 @@ export const researchSchema: SchemaDefinition<ResearchResponse> = {
         );
       })
     );
-  }
+  },
 };
 
 export const outlineSchema: SchemaDefinition<OutlineResponse> = {
@@ -138,7 +140,7 @@ export const outlineSchema: SchemaDefinition<OutlineResponse> = {
         );
       })
     );
-  }
+  },
 };
 
 export const writeSchema: SchemaDefinition<WriteResponse> = {
@@ -176,17 +178,17 @@ export const writeSchema: SchemaDefinition<WriteResponse> = {
       }) &&
       isString(value.notes)
     );
-  }
+  },
 };
 
 export function parseStructuredJson<T>(
   schema: SchemaDefinition<T>,
-  rawText: string
+  rawText: string,
 ): T {
   const parsed = JSON.parse(rawText) as unknown;
   if (!schema.validate(parsed)) {
     throw new Error(
-      `Response failed schema ${schema.name}. Expected shape: ${schema.explain}`
+      `Response failed schema ${schema.name}. Expected shape: ${schema.explain}`,
     );
   }
   return parsed;

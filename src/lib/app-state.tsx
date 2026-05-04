@@ -4,7 +4,7 @@ import {
   useEffect,
   useMemo,
   useState,
-  type PropsWithChildren
+  type PropsWithChildren,
 } from "react";
 
 import {
@@ -16,13 +16,13 @@ import {
   savePost,
   saveSession,
   saveSettings,
-  snapshotDatabase
+  snapshotDatabase,
 } from "./db";
 import {
   buildFixtureMap,
   createCacheMissSession,
   getBundledSession,
-  listReplaySessions
+  listReplaySessions,
 } from "./demo";
 import {
   confirmDocumentSchema,
@@ -30,7 +30,7 @@ import {
   researchSchema,
   trendingPromptSchema,
   trendingResearchSchema,
-  writeSchema
+  writeSchema,
 } from "./llm-schemas";
 import { createFixtureTransport, StructuredLlmClient } from "./llm";
 import { resolveRuntimeMode } from "./runtime";
@@ -50,13 +50,13 @@ import type {
   TrendingPromptResponse,
   WritingPrompt,
   WriteCycleResult,
-  WriteStage
+  WriteStage,
 } from "./types";
 import {
   createDraft,
   createEmptySettings,
   isSettingsComplete,
-  toPlainText
+  toPlainText,
 } from "./types";
 
 interface AppStateValue {
@@ -67,16 +67,19 @@ interface AppStateValue {
   posts: PostRecord[];
   sessions: SessionRecord[];
   replaySessions: SessionRecord[];
-  createOrLoadDraft: (id?: string | null, seed?: string) => Promise<DraftRecord>;
+  createOrLoadDraft: (
+    id?: string | null,
+    seed?: string,
+  ) => Promise<DraftRecord>;
   saveApiKey: (apiKey: string) => Promise<void>;
   generateConfirmation: (
     kind: SetupDocumentKind,
-    input: RichInputValue
+    input: RichInputValue,
   ) => Promise<string>;
   saveConfirmedDocument: (
     kind: SetupDocumentKind,
     input: RichInputValue,
-    summary: string
+    summary: string,
   ) => Promise<void>;
   saveDraftRecord: (draft: DraftRecord) => Promise<DraftRecord>;
   runTrendingResearch: () => Promise<{
@@ -87,7 +90,7 @@ interface AppStateValue {
   runOutline: (draft: DraftRecord) => Promise<DraftRecord>;
   runWritePipeline: (
     draft: DraftRecord,
-    onStage: (stage: WriteStage, percent: number) => void
+    onStage: (stage: WriteStage, percent: number) => void,
   ) => Promise<{ draft: DraftRecord; post: PostRecord }>;
   getSessionById: (id: string) => SessionRecord | null;
   resetAll: () => Promise<void>;
@@ -103,27 +106,30 @@ const AppStateContext = createContext<AppStateValue | null>(null);
 function updateSettingsRecord(
   settings: SettingsRecord,
   kind: SetupDocumentKind,
-  record: ConfirmationRecord
+  record: ConfirmationRecord,
 ): SettingsRecord {
   return {
     ...settings,
     [kind]: record,
-    updatedAt: new Date().toISOString()
+    updatedAt: new Date().toISOString(),
   };
 }
 
-function buildClient(mode: ReturnType<typeof resolveRuntimeMode>, apiKey: string) {
+function buildClient(
+  mode: ReturnType<typeof resolveRuntimeMode>,
+  apiKey: string,
+) {
   if (mode === "integration" || mode === "demo") {
     return new StructuredLlmClient({
       apiKey,
       mode,
-      transport: createFixtureTransport(buildFixtureMap(getBundledSession()))
+      transport: createFixtureTransport(buildFixtureMap(getBundledSession())),
     });
   }
 
   return new StructuredLlmClient({
     apiKey,
-    mode
+    mode,
   });
 }
 
@@ -135,14 +141,18 @@ function upsertById<T extends { id: string }>(items: T[], next: T): T[] {
 function buildConfirmationPrompt(
   kind: SetupDocumentKind,
   input: RichInputValue,
-  settings: SettingsRecord
+  settings: SettingsRecord,
 ): string {
   return [
     `You are validating the ${kind} document for a Substack writing assistant.`,
     "Be crisp and practical.",
-    settings.company ? `Company context:\n${toPlainText(settings.company.input)}` : "",
-    settings.voice ? `Voice context:\n${toPlainText(settings.voice.input)}` : "",
-    `Candidate ${kind} document:\n${toPlainText(input)}`
+    settings.company
+      ? `Company context:\n${toPlainText(settings.company.input)}`
+      : "",
+    settings.voice
+      ? `Voice context:\n${toPlainText(settings.voice.input)}`
+      : "",
+    `Candidate ${kind} document:\n${toPlainText(input)}`,
   ]
     .filter(Boolean)
     .join("\n\n");
@@ -153,7 +163,7 @@ function buildSessionRecord(
   cacheEntry: SessionCacheEntry,
   settings: SettingsRecord,
   draft: DraftRecord | null,
-  post: PostRecord | null
+  post: PostRecord | null,
 ): SessionRecord {
   return {
     id: `session-${cacheEntry.key}-${Date.now()}`,
@@ -165,13 +175,13 @@ function buildSessionRecord(
     draftSnapshot: draft,
     postSnapshot: post,
     replaySteps: [],
-    cacheEntries: [cacheEntry]
+    cacheEntries: [cacheEntry],
   };
 }
 
 function mapFinalPostToPostRecord(
   draft: DraftRecord,
-  finalPost: FinalPost
+  finalPost: FinalPost,
 ): PostRecord {
   return {
     id: `post-${draft.id}`,
@@ -181,13 +191,15 @@ function mapFinalPostToPostRecord(
     sources: draft.researchSources,
     footnotes: finalPost.footnotes,
     attributions: finalPost.attributions,
-    createdAt: finalPost.createdAt
+    createdAt: finalPost.createdAt,
   };
 }
 
 export function AppStateProvider({ children }: PropsWithChildren) {
   const [ready, setReady] = useState(false);
-  const [settings, setSettings] = useState<SettingsRecord>(createEmptySettings());
+  const [settings, setSettings] = useState<SettingsRecord>(
+    createEmptySettings(),
+  );
   const [drafts, setDrafts] = useState<DraftRecord[]>([]);
   const [posts, setPosts] = useState<PostRecord[]>([]);
   const [sessions, setSessions] = useState<SessionRecord[]>([]);
@@ -236,7 +248,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
             finalPost: null,
             writeCycles: [],
             status: "research",
-            updatedAt: new Date().toISOString()
+            updatedAt: new Date().toISOString(),
           });
         }
         await refresh();
@@ -253,7 +265,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
             finalPost: null,
             writeCycles: [],
             status: "research",
-            updatedAt: new Date().toISOString()
+            updatedAt: new Date().toISOString(),
           });
         }
         if (bundled.postSnapshot) {
@@ -265,7 +277,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         await saveSession(createCacheMissSession());
         await refresh();
       },
-      getSnapshot: async () => snapshotDatabase()
+      getSnapshot: async () => snapshotDatabase(),
     };
 
     return () => {
@@ -277,7 +289,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
     name: string,
     cacheEntry: SessionCacheEntry,
     draft: DraftRecord | null,
-    post: PostRecord | null
+    post: PostRecord | null,
   ) {
     const session = buildSessionRecord(name, cacheEntry, settings, draft, post);
     await saveSession(session);
@@ -288,7 +300,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
     const next = {
       ...settings,
       apiKey,
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
     };
     await saveSettings(next);
     setSettings(next);
@@ -296,14 +308,14 @@ export function AppStateProvider({ children }: PropsWithChildren) {
 
   async function generateConfirmation(
     kind: SetupDocumentKind,
-    input: RichInputValue
+    input: RichInputValue,
   ): Promise<string> {
     const client = buildClient(mode, settings.apiKey);
     const result = await client.generate({
       cacheKey: `confirm-${kind}`,
       model: "pro",
       schema: confirmDocumentSchema,
-      prompt: buildConfirmationPrompt(kind, input, settings)
+      prompt: buildConfirmationPrompt(kind, input, settings),
     });
     await persistSession(
       `Confirm ${kind}`,
@@ -313,10 +325,10 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         model: result.model,
         promptSummary: `${kind} confirmation`,
         response: result.data,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       },
       null,
-      null
+      null,
     );
     return result.data.summary;
   }
@@ -324,12 +336,12 @@ export function AppStateProvider({ children }: PropsWithChildren) {
   async function saveConfirmedDocument(
     kind: SetupDocumentKind,
     input: RichInputValue,
-    summary: string
+    summary: string,
   ) {
     const record: ConfirmationRecord = {
       input,
       summary,
-      confirmedAt: new Date().toISOString()
+      confirmedAt: new Date().toISOString(),
     };
     const next = updateSettingsRecord(settings, kind, record);
     await saveSettings(next);
@@ -338,10 +350,11 @@ export function AppStateProvider({ children }: PropsWithChildren) {
 
   async function createOrLoadDraft(
     id?: string | null,
-    seed = ""
+    seed = "",
   ): Promise<DraftRecord> {
     if (id) {
-      const existing = drafts.find((entry) => entry.id === id) ?? (await getDraft(id));
+      const existing =
+        drafts.find((entry) => entry.id === id) ?? (await getDraft(id));
       if (existing) {
         return existing;
       }
@@ -355,7 +368,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
   async function saveDraftRecord(draft: DraftRecord): Promise<DraftRecord> {
     const next = {
       ...draft,
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
     };
     await saveDraft(next);
     setDrafts((current) => upsertById(current, next));
@@ -367,7 +380,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
     const topics = [
       { id: "trending-routines", title: "Rituals and routines" },
       { id: "trending-value", title: "Value without downgrade" },
-      { id: "trending-care", title: "Care systems" }
+      { id: "trending-care", title: "Care systems" },
     ];
 
     const results = await Promise.all(
@@ -378,10 +391,10 @@ export function AppStateProvider({ children }: PropsWithChildren) {
           schema: trendingResearchSchema,
           prompt: [
             `Research the theme "${topic.title}" for a company newsletter.`,
-            "Return one trend cluster with grounded source-style metadata."
-          ].join("\n")
-        })
-      )
+            "Return one trend cluster with grounded source-style metadata.",
+          ].join("\n"),
+        }),
+      ),
     );
 
     const trends = results.flatMap((result) => result.data.trends);
@@ -391,8 +404,8 @@ export function AppStateProvider({ children }: PropsWithChildren) {
       schema: trendingPromptSchema,
       prompt: [
         "Synthesize these trends into exactly three writing prompts.",
-        JSON.stringify(trends, null, 2)
-      ].join("\n\n")
+        JSON.stringify(trends, null, 2),
+      ].join("\n\n"),
     });
 
     await persistSession(
@@ -404,17 +417,17 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         promptSummary: "Trending prompt synthesis",
         response: {
           trends,
-          prompts: (prompts.data as TrendingPromptResponse).prompts
+          prompts: (prompts.data as TrendingPromptResponse).prompts,
         },
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       },
       null,
-      null
+      null,
     );
 
     return {
       trends,
-      prompts: prompts.data.prompts
+      prompts: prompts.data.prompts,
     };
   }
 
@@ -427,16 +440,18 @@ export function AppStateProvider({ children }: PropsWithChildren) {
       prompt: [
         "Use fast grounded research for this newsletter topic.",
         `Topic:\n${toPlainText(draft.topic)}`,
-        settings.company ? `Company:\n${toPlainText(settings.company.input)}` : ""
+        settings.company
+          ? `Company:\n${toPlainText(settings.company.input)}`
+          : "",
       ]
         .filter(Boolean)
-        .join("\n\n")
+        .join("\n\n"),
     });
 
     const next = await saveDraftRecord({
       ...draft,
       status: "research",
-      researchSources: result.data.sources
+      researchSources: result.data.sources,
     });
 
     await persistSession(
@@ -447,10 +462,10 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         model: result.model,
         promptSummary: "Draft research",
         response: result.data,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       },
       next,
-      null
+      null,
     );
 
     return next;
@@ -465,14 +480,14 @@ export function AppStateProvider({ children }: PropsWithChildren) {
       prompt: [
         "Create a one-shot outline for the newsletter.",
         `Topic:\n${toPlainText(draft.topic)}`,
-        `Sources:\n${JSON.stringify(draft.researchSources, null, 2)}`
-      ].join("\n\n")
+        `Sources:\n${JSON.stringify(draft.researchSources, null, 2)}`,
+      ].join("\n\n"),
     });
 
     const next = await saveDraftRecord({
       ...draft,
       status: "outline",
-      outline: result.data.outline
+      outline: result.data.outline,
     });
 
     await persistSession(
@@ -483,10 +498,10 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         model: result.model,
         promptSummary: "Draft outline",
         response: result.data,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       },
       next,
-      null
+      null,
     );
 
     return next;
@@ -495,30 +510,34 @@ export function AppStateProvider({ children }: PropsWithChildren) {
   async function runWriteStage(
     draft: DraftRecord,
     stage: WriteStage,
-    content: string
+    content: string,
   ) {
     const client = buildClient(mode, settings.apiKey);
     const promptParts = [
       `Run the ${stage} stage for the newsletter.`,
       `Topic:\n${toPlainText(draft.topic)}`,
-      draft.outline ? `Outline:\n${JSON.stringify(draft.outline, null, 2)}` : "",
+      draft.outline
+        ? `Outline:\n${JSON.stringify(draft.outline, null, 2)}`
+        : "",
       `Sources:\n${JSON.stringify(draft.researchSources, null, 2)}`,
       settings.voice ? `Voice:\n${toPlainText(settings.voice.input)}` : "",
-      settings.guardrails ? `Guardrails:\n${toPlainText(settings.guardrails.input)}` : "",
-      content ? `Current draft:\n${content}` : ""
+      settings.guardrails
+        ? `Guardrails:\n${toPlainText(settings.guardrails.input)}`
+        : "",
+      content ? `Current draft:\n${content}` : "",
     ].filter(Boolean);
 
     return client.generate({
       cacheKey: stage,
       model: "pro",
       schema: writeSchema,
-      prompt: promptParts.join("\n\n")
+      prompt: promptParts.join("\n\n"),
     });
   }
 
   async function runWritePipeline(
     draft: DraftRecord,
-    onStage: (stage: WriteStage, percent: number) => void
+    onStage: (stage: WriteStage, percent: number) => void,
   ): Promise<{ draft: DraftRecord; post: PostRecord }> {
     const cycles: WriteCycleResult[] = [];
     let currentContent = "";
@@ -535,13 +554,13 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         markdown: result.data.markdown,
         footnotes: result.data.footnotes,
         attributions: result.data.attributions,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       };
       cycles.push({
         stage,
         content: result.data.markdown,
         notes: result.data.notes,
-        completedAt: new Date().toISOString()
+        completedAt: new Date().toISOString(),
       });
     }
 
@@ -554,12 +573,14 @@ export function AppStateProvider({ children }: PropsWithChildren) {
       ...draft,
       status: "complete",
       writeCycles: cycles,
-      finalPost
+      finalPost,
     });
     const post = mapFinalPostToPostRecord(completedDraft, finalPost);
     await savePost(post);
     await deleteDraft(completedDraft.id);
-    setDrafts((current) => current.filter((entry) => entry.id !== completedDraft.id));
+    setDrafts((current) =>
+      current.filter((entry) => entry.id !== completedDraft.id),
+    );
     setPosts((current) => upsertById(current, post));
     await persistSession(
       "Write pipeline",
@@ -569,15 +590,15 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         model: "gemini-3.1-pro-preview",
         promptSummary: "Final write pipeline",
         response: finalPost,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       },
       completedDraft,
-      post
+      post,
     );
 
     return {
       draft: completedDraft,
-      post
+      post,
     };
   }
 
@@ -606,7 +627,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         finalPost: null,
         writeCycles: [],
         status: "research",
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       });
     }
     await refresh();
@@ -629,7 +650,7 @@ export function AppStateProvider({ children }: PropsWithChildren) {
         finalPost: null,
         writeCycles: [],
         status: "research",
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       });
     }
     if (bundled.postSnapshot) {
@@ -666,13 +687,15 @@ export function AppStateProvider({ children }: PropsWithChildren) {
       seedDraft,
       seedLibrary,
       seedCacheMissSession,
-      refresh
+      refresh,
     }),
-    [ready, mode, settings, drafts, posts, sessions]
+    [ready, mode, settings, drafts, posts, sessions],
   );
 
   return (
-    <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>
+    <AppStateContext.Provider value={value}>
+      {children}
+    </AppStateContext.Provider>
   );
 }
 
@@ -692,6 +715,6 @@ export function useSetupStatus() {
     company: Boolean(settings.company),
     voice: Boolean(settings.voice),
     guardrails: Boolean(settings.guardrails),
-    complete: isSettingsComplete(settings)
+    complete: isSettingsComplete(settings),
   };
 }

@@ -15,7 +15,8 @@ export function DashboardPage() {
           <p className="eyebrow">Workspace</p>
           <h1>Dashboard</h1>
           <p className="lede">
-            Start a new post, explore trends, resume drafts, or inspect saved work.
+            Start a new post, explore trends, resume drafts, or inspect saved
+            work.
           </p>
         </div>
         <div className="button-row">
@@ -63,7 +64,9 @@ export function DashboardPage() {
                 className="list-row"
                 key={draft.id}
                 type="button"
-                onClick={() => navigate(`/new-post?draft=${encodeURIComponent(draft.id)}`)}
+                onClick={() =>
+                  navigate(`/new-post?draft=${encodeURIComponent(draft.id)}`)
+                }
               >
                 <span>
                   <strong>{draft.promptSeed || "Untitled draft"}</strong>
@@ -76,14 +79,18 @@ export function DashboardPage() {
         </Card>
 
         <Card title="Post history" eyebrow="Library">
-          {posts.length === 0 ? <p className="muted">No saved posts yet.</p> : null}
+          {posts.length === 0 ? (
+            <p className="muted">No saved posts yet.</p>
+          ) : null}
           <div className="stack">
             {posts.map((post) => (
               <button
                 className="list-row"
                 key={post.id}
                 type="button"
-                onClick={() => navigate(`/posts/${encodeURIComponent(post.id)}`)}
+                onClick={() =>
+                  navigate(`/posts/${encodeURIComponent(post.id)}`)
+                }
               >
                 <span>
                   <strong>{post.title}</strong>
@@ -97,7 +104,8 @@ export function DashboardPage() {
 
         <Card title="Recorded sessions" eyebrow="Replay">
           <p className="muted">
-            {sessions.length} session{sessions.length === 1 ? "" : "s"} stored locally.
+            {sessions.length} session{sessions.length === 1 ? "" : "s"} stored
+            locally.
           </p>
         </Card>
       </section>

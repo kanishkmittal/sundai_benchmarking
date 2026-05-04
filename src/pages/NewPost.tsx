@@ -38,9 +38,12 @@ export function NewPostPage() {
     saveDraftRecord,
     runResearch,
     runOutline,
-    runWritePipeline
+    runWritePipeline,
   } = useAppState();
-  const params = useMemo(() => new URLSearchParams(location.search), [location.search]);
+  const params = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search],
+  );
   const draftId = params.get("draft");
   const prefill = params.get("prefill") ?? "";
   const [draft, setDraft] = useState<DraftRecord | null>(null);
@@ -91,7 +94,7 @@ export function NewPostPage() {
           setError(
             pipelineError instanceof Error
               ? pipelineError.message
-              : "Unable to finish the write pipeline."
+              : "Unable to finish the write pipeline.",
           );
         }
       } finally {
@@ -126,13 +129,15 @@ export function NewPostPage() {
       const saved = await saveDraftRecord({
         ...currentDraft,
         status: "topic",
-        promptSeed: currentDraft.topic.text.trim()
+        promptSeed: currentDraft.topic.text.trim(),
       });
       const researched = await runResearch(saved);
       setDraft(researched);
     } catch (researchError) {
       setError(
-        researchError instanceof Error ? researchError.message : "Unable to research the topic."
+        researchError instanceof Error
+          ? researchError.message
+          : "Unable to research the topic.",
       );
     }
   }
@@ -146,12 +151,14 @@ export function NewPostPage() {
       setError("");
       const outlined = await runOutline({
         ...currentDraft,
-        status: "outline"
+        status: "outline",
       });
       setDraft(outlined);
     } catch (outlineError) {
       setError(
-        outlineError instanceof Error ? outlineError.message : "Unable to build the outline."
+        outlineError instanceof Error
+          ? outlineError.message
+          : "Unable to build the outline.",
       );
     }
   }
@@ -164,8 +171,10 @@ export function NewPostPage() {
     const next = await saveDraftRecord({
       ...currentDraft,
       researchSources: currentDraft.researchSources.map((source) =>
-        source.id === sourceId ? { ...source, highlight: !source.highlight } : source
-      )
+        source.id === sourceId
+          ? { ...source, highlight: !source.highlight }
+          : source,
+      ),
     });
     setDraft(next);
   }
@@ -178,8 +187,8 @@ export function NewPostPage() {
     const next = await saveDraftRecord({
       ...currentDraft,
       researchSources: currentDraft.researchSources.filter(
-        (source) => source.id !== sourceId
-      )
+        (source) => source.id !== sourceId,
+      ),
     });
     setDraft(next);
   }
@@ -191,7 +200,8 @@ export function NewPostPage() {
           <p className="eyebrow">New post</p>
           <h1>Build a newsletter draft</h1>
           <p className="lede">
-            Research, outline, write, edit, and guardrail checks run in sequence.
+            Research, outline, write, edit, and guardrail checks run in
+            sequence.
           </p>
         </div>
         <button

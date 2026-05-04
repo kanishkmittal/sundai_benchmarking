@@ -30,7 +30,7 @@ export function TrendingTopicsPage() {
           setError(
             loadError instanceof Error
               ? loadError.message
-              : "Unable to load trending topics."
+              : "Unable to load trending topics.",
           );
         }
       } finally {
@@ -54,8 +54,8 @@ export function TrendingTopicsPage() {
           <p className="eyebrow">Trending Topics</p>
           <h1>What the market is signaling</h1>
           <p className="lede">
-            Parallel fast-model research streams feed a single set of three writing
-            prompts.
+            Parallel fast-model research streams feed a single set of three
+            writing prompts.
           </p>
         </div>
         <button
@@ -101,7 +101,7 @@ export function TrendingTopicsPage() {
                     {source.author} · {source.publicationDate}
                   </small>
                 </div>
-              ))
+              )),
             )}
           </div>
         </Card>
@@ -118,7 +118,9 @@ export function TrendingTopicsPage() {
                 className="button"
                 type="button"
                 onClick={() =>
-                  navigate(`/new-post?prefill=${encodeURIComponent(prompt.prompt)}`)
+                  navigate(
+                    `/new-post?prefill=${encodeURIComponent(prompt.prompt)}`,
+                  )
                 }
               >
                 Use prompt

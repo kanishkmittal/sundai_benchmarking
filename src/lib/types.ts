@@ -1,10 +1,20 @@
-export type RuntimeMode = "production" | "integration" | "smoke" | "manual" | "demo";
+export type RuntimeMode =
+  | "production"
+  | "integration"
+  | "smoke"
+  | "manual"
+  | "demo";
 
 export type ModelAlias = "fast" | "pro" | "lite";
 
 export type SetupDocumentKind = "company" | "voice" | "guardrails";
 
-export type DraftStage = "topic" | "research" | "outline" | "write" | "complete";
+export type DraftStage =
+  | "topic"
+  | "research"
+  | "outline"
+  | "write"
+  | "complete";
 
 export type WriteStage = "write" | "edit" | "guardrails";
 
@@ -237,7 +247,7 @@ export function createEmptyRichInput(text = ""): RichInputValue {
   return {
     text,
     links: [],
-    attachments: []
+    attachments: [],
   };
 }
 
@@ -247,16 +257,16 @@ export function createEmptySettings(): SettingsRecord {
     company: null,
     voice: null,
     guardrails: null,
-    updatedAt: new Date(0).toISOString()
+    updatedAt: new Date(0).toISOString(),
   };
 }
 
 export function isSettingsComplete(settings: SettingsRecord): boolean {
   return Boolean(
     settings.apiKey.trim() &&
-      settings.company &&
-      settings.voice &&
-      settings.guardrails
+    settings.company &&
+    settings.voice &&
+    settings.guardrails,
   );
 }
 
@@ -272,7 +282,7 @@ export function createDraft(seed = ""): DraftRecord {
     writeCycles: [],
     finalPost: null,
     createdAt: timestamp,
-    updatedAt: timestamp
+    updatedAt: timestamp,
   };
 }
 
@@ -285,7 +295,7 @@ export function toPlainText(value: RichInputValue): string {
     parts.push(
       `Attachments:\n${value.attachments
         .map((attachment) => `${attachment.name}: ${attachment.content}`)
-        .join("\n\n")}`
+        .join("\n\n")}`,
     );
   }
   return parts.filter(Boolean).join("\n\n");
@@ -295,6 +305,6 @@ export function cloneRichInput(value: RichInputValue): RichInputValue {
   return {
     text: value.text,
     links: [...value.links],
-    attachments: value.attachments.map((attachment) => ({ ...attachment }))
+    attachments: value.attachments.map((attachment) => ({ ...attachment })),
   };
 }

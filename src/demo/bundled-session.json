@@ -9,9 +9,7 @@
     "company": {
       "input": {
         "text": "P&G is a portfolio of everyday brands that earn trust through repeated daily use.",
-        "links": [
-          "https://example.com/pg-brand-portfolio"
-        ],
+        "links": ["https://example.com/pg-brand-portfolio"],
         "attachments": []
       },
       "summary": "The company brief is grounded in daily-use categories, brand trust, and broad household relevance.",

@@ -7,7 +7,13 @@ interface CardProps extends PropsWithChildren {
   className?: string;
 }
 
-export function Card({ title, eyebrow, actions, className, children }: CardProps) {
+export function Card({
+  title,
+  eyebrow,
+  actions,
+  className,
+  children,
+}: CardProps) {
   return (
     <section className={`card ${className ?? ""}`.trim()}>
       {(title || eyebrow || actions) && (

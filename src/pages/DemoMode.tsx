@@ -16,7 +16,7 @@ export function DemoModePage() {
 
   const session = useMemo<SessionRecord | null>(
     () => replaySessions.find((entry) => entry.id === activeSessionId) ?? null,
-    [replaySessions, activeSessionId]
+    [replaySessions, activeSessionId],
   );
   const step = session?.replaySteps[stepIndex] ?? null;
 
@@ -42,9 +42,13 @@ export function DemoModePage() {
       return;
     }
     if (step.id === "new-post-write") {
-      const hasWriteEntry = session.cacheEntries.some((entry) => entry.key === "write");
+      const hasWriteEntry = session.cacheEntries.some(
+        (entry) => entry.key === "write",
+      );
       if (!hasWriteEntry) {
-        setCacheMiss("This replay is missing cached output for the write step.");
+        setCacheMiss(
+          "This replay is missing cached output for the write step.",
+        );
         return;
       }
     }
@@ -63,8 +67,8 @@ export function DemoModePage() {
           <p className="eyebrow">Demo mode</p>
           <h1>Replay recorded sessions</h1>
           <p className="lede">
-            Bundled demo sessions replay without live API calls and never fall back
-            on cache misses.
+            Bundled demo sessions replay without live API calls and never fall
+            back on cache misses.
           </p>
         </div>
         <button
@@ -126,7 +130,8 @@ export function DemoModePage() {
                 <p className="demo-fade">{step.prefill.guardrailsText}</p>
               </div>
             ) : null}
-            {showAttachments && (step?.prefill?.attachments?.length ?? 0) > 0 ? (
+            {showAttachments &&
+            (step?.prefill?.attachments?.length ?? 0) > 0 ? (
               <div className="rich-input__chips">
                 {step?.prefill?.attachments?.map((attachment) => (
                   <span className="chip" key={attachment.id}>
